@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Главная</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/HeaderStyles.css" rel="stylesheet" />
+    <link href="~/css/MainStyles.css" rel="stylesheet" />
+    <link href="~/css/FooterStyles.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery-1.11.3.min.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body>
+    <div class="main">
+        <div class="row">
+            <div class="container page_before_header">
+                <div class="col-lg-4 logo">
+                    <img src="~/images/logo.png" alt="Компания eoc" />
+                    <img src="~/images/big-black-divider-n.png" alt="|" />
+                </div>
+                <div class="col-lg-6 title">
+                    <img src="~/images/name_company.png" />
+                    @*<p>«Электро Оптик Контроль»</p>
+                        <b>Изготовление корпусов для видеокамер</b>*@
+                </div>
+                <div class="col-lg-2 right_logo">
+                    <img src="~/images/right_logo1.png" alt="Логотип с названием сайта" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="before_wrapper">
+        &nbsp;
+        &nbsp;
+        <h1 class="text-center">ЗДЕСЬ БУДЕТ ВИЗИТКА</h1>
+        &nbsp;
+        &nbsp;
+    </div>
+    <div class="wrapper_fon">
+        <div class="wrapper_content">
+            @* Блок основгого контента *@
+            <div class="wrapper">
+                <div class="container-fluid">
+                    @*<div id="header" class="clearfix">*@
+                    <div class="row">
+                        @* Меню хидера *@
+                        @* nav - помещает навигацию сайта и отдельные ссылки *@
+                        @*<div role="navigation" class="navbar">*@
+                        @* Элементы меню *@
+                        <div class="container head">
+                            @* Реализация бургера при маленьком экране *@
+                            <div class="navbar-header">
+                                @* data-target="#navbarCollapse" - при нажатии на кнопку мы будем отображать блок с id = navbarCollapse, т.е наше меню *@
+                                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                                    <span class="sr-only"> Toogle navigation </span>
+                                    <span class="icon-bar"> </span>
+                                    <span class="icon-bar"> </span>
+                                    <span class="icon-bar"> </span>
+                                </button>
+                            </div>
+                            @* navbar-right - прижимает навигацию к правому краю *@
+                            @* Здесь id="navbarCollapse" нужен для того, чтобы на мобильных устройствах появился бургер с вертикальным меню *@
+                            <div class="col-lg-12">
+                                <div id="navbarCollapse" class="collapse navbar-collapse">
+                                    @* Список меню *@
+                                    @* class="active" - означает активную вкладку меню, которая изначально подсвечивается *@
+                                    <ul class="nav nav-pills">
+                                        <li><a href="http://www.eoc-kmvk.ru" class="ui-box bottom-inOutSpread"> ГЛАВНАЯ </a></li>
+                                        <li><a href="#resume" class="ui-box bottom-inOutSpread"> КАТАЛОГ </a></li>
+                                        <li><a href="#uslugi" class="ui-box bottom-inOutSpread"> ФОТОГАЛЕРЕЯ </a></li>
+                                        <li><a href="#works" class="ui-box bottom-inOutSpread"> КОНТАКТЫ </a></li>
+                                        <li><a href="#comments" class="ui-box bottom-inOutSpread"> ДОКУМЕНТАЦИЯ </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* Выгружаем первые изображения *@
+            <div class="photo_projects col-lg-12">
+                <img class="line-1" src="~/images/photo_projects/1-IP-video-camera-AKS-2Mp-2,8-POE-v-korpuse-KmVK-1-4.jpg" alt="Видеокамеры в корпусах КмВК"/>
+                <img class="line-1" src="~/images/photo_projects/1-IP-video-camera-AKS-2Mp-2,8-POE-v-korpuse-KmVK-Т-1-4.jpg" alt="Видеокамеры в  корпусах КмВК-Т" />
+                <img class="line-1" src="~/images/photo_projects/1-IP-video-camera-AKS-2Mp-2,8-POE-v-korpuse-KmVK-L-1-4.jpg" alt="Видеокамеры в корпусах КмВК-Л" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

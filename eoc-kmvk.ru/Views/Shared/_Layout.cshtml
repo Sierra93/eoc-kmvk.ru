@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/HeaderStyles.css" rel="stylesheet" />
+    <link href="~/css/MainStyles.css" rel="stylesheet" />
+    <link href="~/css/FooterStyles.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery-1.11.3.min.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body>    
+    @RenderBody()
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

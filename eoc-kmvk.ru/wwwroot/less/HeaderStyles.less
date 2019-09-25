@@ -1,0 +1,76 @@
+﻿* {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+body {
+    font-size: 22px;
+    line-height: 26px;
+    font-family: 'Open Sans',sans-serif;
+    overflow-x: hidden;
+}
+/*стили для центрирования элементов*/
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*margin: 10px 10px;*/
+}
+.breadcrumbs li {
+    display: inline-block; /* Выстраиваем по горизонтали */
+    list-style: none;
+}
+.nav-pills {
+    padding: 1%;
+    display: flex !important;
+    justify-content: center !important;
+}
+/*стили для ссылок меню*/
+.nav-pills > li > a {
+    /*color: black;*/
+    color: white;
+    /*color: white;*/
+    //font-weight: 900;
+    position: relative;
+    display: block;
+    padding: 0 !important;
+
+    &:hover {
+        background-color: #298ACB !important;
+        color: #FFFFFF !important;
+        width: 100%;
+    }
+}
+/*отступ у ссылок меню со всех сторон*/
+.navbar-default {
+    //padding: 1%;
+    border-radius: 0;
+    width: 100%;
+    /*border-bottom: 1px solid silver;*/
+    /*padding-top: 0;*/
+    font-weight: 900;
+    display: flex;
+    margin: 0;
+}
+.container-fluid {
+    border-bottom: 1px solid;
+    background-color: #595959;
+    margin-left: 98px!important;
+    margin-right: 98px!important;
+}
+// Для центрирования элементов меню
+.head {
+    display: flex;
+    align-items: center;
+}
+.title {
+    font-size: 22px;
+    margin-left: -216px;
+}
+// До хидера
+.page_before_header {
+    display: flex;
+    align-items: center;
+}
+.right_logo {
+    margin-right: 100px;
+}
