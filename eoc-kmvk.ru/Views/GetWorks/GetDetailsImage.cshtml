@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Главная</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/HeaderStyles.css" rel="stylesheet" />
+    <link href="~/css/MainStyles.css" rel="stylesheet" />
+    <link href="~/css/FooterStyles.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery-1.11.3.min.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body>
+    <div class="main">
+        <div class="row">
+            <div class="container page_before_header">
+                <div class="col-lg-4 logo">
+                    <img src="~/images/logo.png" alt="Компания eoc" />
+                    <img src="~/images/big-black-divider-n.png" alt="|" />
+                </div>
+                <div class="col-lg-6 title">
+                    <img src="~/images/name_company.png" />
+                    @*<p>«Электро Оптик Контроль»</p>
+                        <b>Изготовление корпусов для видеокамер</b>*@
+                </div>
+                <div class="col-lg-2 right_logo">
+                    <img src="~/images/right_logo1.png" alt="Логотип с названием сайта" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="before_wrapper">
+        &nbsp;
+        &nbsp;
+        <h1 class="text-center">ЗДЕСЬ БУДЕТ ВИЗИТКА</h1>
+        &nbsp;
+        &nbsp;
+    </div>
+    <div class="wrapper_fon">
+        <div class="wrapper_content">
+            @* Блок основгого контента *@
+            <div class="wrapper">
+                <div class="container-fluid">
+                    @*<div id="header" class="clearfix">*@
+                    <div class="row">
+                        @* Меню хидера *@
+                        @* nav - помещает навигацию сайта и отдельные ссылки *@
+                        @*<div role="navigation" class="navbar">*@
+                        @* Элементы меню *@
+                        <div class="container head">
+                            @* Реализация бургера при маленьком экране *@
+                            <div class="navbar-header">
+                                @* data-target="#navbarCollapse" - при нажатии на кнопку мы будем отображать блок с id = navbarCollapse, т.е наше меню *@
+                                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                                    <span class="sr-only"> Toogle navigation </span>
+                                    <span class="icon-bar"> </span>
+                                    <span class="icon-bar"> </span>
+                                    <span class="icon-bar"> </span>
+                                </button>
+                            </div>
+                            @* navbar-right - прижимает навигацию к правому краю *@
+                            @* Здесь id="navbarCollapse" нужен для того, чтобы на мобильных устройствах появился бургер с вертикальным меню *@
+                            <div id="navbarCollapse" class="header">
+                                <form class="form" asp-action="GetDetailsImage" asp-controller="GetWorks" method="post">
+                                    <nav class="menu">
+                                        <ul>
+                                            <li><button id="list" type="submit" value="main" name="id" class="btn-link">ГЛАВНАЯ</button></li>
+                                            <li class="katalog">
+                                                <button class="btn-link">КАТАЛОГ</button>
+                                                <ul class="catalog_dropdown">
+                                                    <li><button id="list" type="submit" value="1" name="id" class="btn-link">Видеокамеры в корпусах КмВК</button></li>
+                                                    <li><button id="list" type="submit" value="2" name="id" class="btn-link">Видеокамеры в корпусах КмВК-Т</button></li>
+                                                    <li><button id="list" type="submit" value="3" name="id" class="btn-link">Видеокамеры в корпусах КмВК-Л</button></li>
+                                                    <li><button id="list" type="submit" value="4" name="id" class="btn-link">Видеокамеры на кронштейнах</button></li>
+                                                    <li><button id="list" type="submit" value="5" name="id" class="btn-link">Комплекты для видеонаблюдения</button></li>
+                                                    <li><button id="list" type="submit" value="6" name="id" class="btn-link">Корпуса КмВК, кронштейны, металлические боксы</button></li>
+                                                </ul>
+                                            </li>
+                                            <li><button class="btn-link">ФОТОГАЛЕРЕЯ</button></li>
+                                            <li><button class="btn-link">КОНТАКТЫ</button></li>
+                                            <li><button class="btn-link">ДОКУМЕНТАЦИЯ</button></li>
+                                        </ul>
+                                    </nav>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Выгружаем первые изображения, которые будут являться категориями
+            При нажатии также переходим на страницу с конкретными изображениями работ-->
+            <div class="photo_projects">
+                @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
+                @foreach (var item in Model) {
+                    <div id="idImages">
+                        <button class="img_work btn-link">
+                            <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+                            <p id="idTitle" class="text-center text-details">@item.NameWork</p>
+                            <p id="idTitle" class="hidden">@item.Category</p>
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

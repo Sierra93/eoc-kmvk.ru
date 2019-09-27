@@ -6,9 +6,9 @@ using System.Collections;
 
 namespace eoc_kmvk.ru.Models {
     /// <summary>
-    /// Интерфейс, содержащий реализацию с получением работ из БД
+    /// Интерфейс общий для категорий работ
     /// </summary>
-    interface IGetWorks {
+    interface IGetCategory {
         int ID { get; set; }
         string NameWork { get; set; }   // Название работы
         string DetailsWork { get; set; }    // Детальное описание работы
@@ -17,11 +17,13 @@ namespace eoc_kmvk.ru.Models {
         double RubCountNotNds { get; set; } // Руб/шт(без НДС)
         string TermsOfSale { get; set; }    // Условия продажи
         int Category { get; set; }  // Категория работы
+        string TitlePage { get; set; }  // Название категории страницы, на которую переходим после выбора конкретной категории
+        string DetailsPage { get; set; }    // Описание работы
 
         /// <summary>
         /// Метод получения работ из БД
         /// </summary>
         /// <returns></returns>
-        IEnumerable GetWorksFromDB(string id);
+        IEnumerable GetCategoryFromDB(string id); 
     }
 }

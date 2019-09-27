@@ -2,6 +2,9 @@
     margin-left: 5%;
     margin-right: 5%;
 }
+li {
+    list-style: none;
+}
 body {
     font-size: 22px;
     line-height: 26px;
@@ -25,7 +28,7 @@ body {
     justify-content: center !important;
 }
 /*стили для ссылок меню*/
-.nav-pills > li > a {
+.nav-pills > li > button {
     /*color: black;*/
     color: white;
     /*color: white;*/
@@ -73,4 +76,113 @@ body {
 }
 .right_logo {
     margin-right: 100px;
+}
+// Стили для выпадающего списка меню
+.menu {
+    /*для вертикального выравнивания*/
+    display: flex !important;
+    align-items: center !important;
+    color: #f1f1f1 !important;
+    /*для горизонтальноо выравнивания*/
+    margin: 0 auto !important;
+    //font-size: 20px;
+    z-index: 900 !important;
+}
+.menu ul li, .menu ul, .menu ul > li > button {
+    display: inline-block !important;
+    display: flex !important;
+    justify-content: center !important;
+    color: white !important;
+}
+.menu > ul > li > button:hover {
+    background-color: #216796 !important;
+    transition: 0.5s !important;
+}
+
+.menu ul {
+    /*position: relative;*/
+    margin: 0 !important;
+    padding: 0 !important;
+    /*background-color: #f63;*/
+}
+
+.menu ul ul {
+    display: none !important;
+    position: absolute !important;
+    /*background-color: #369;*/
+    margin-top: 10px !important;
+    margin-left: -10px !important;
+}
+/*цвет текста выпадающего списка шапки*/
+.menu ul button {
+    text-decoration: none !important;
+}
+
+.menu ul ul button {
+    text-decoration: none !important;
+}
+
+.menu li:hover ul {
+    display: block !important;
+}
+
+.menu li:hover li {
+    display: block !important;
+}
+
+.header {
+    height: 63px !important;
+    width: 100% !important;
+    //background: #303030;
+    //background: -moz-linear-gradient(top, rgb(76,76,76) 2%, rgb(0,0,0) 99%);
+    //background: -webkit-linear-gradient(top, rgb(76,76,76) 2%,rgb(0,0,0) 99%);
+    //background: linear-gradient(to bottom, rgb(76,76,76) 2%,rgb(0,0,0) 99%);
+    //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#000000',GradientType=0 );
+    display: flex !important;
+    /*box-shadow: 0px 4px 21px 7px rgba(0,0,0,0.22);
+            -webkit-box-shadow: 0px 4px 21px 7px rgba(0,0,0,0.22);
+            -moz-box-shadow: 0px 4px 21px 7px rgba(0,0,0,0.22);*/
+}
+
+.header button {
+    /*Чтобы ничего не слиплось*/
+    display: inline-block !important;
+    padding: 10px !important;
+}
+.katalog {
+    //opacity: 0; /* По умолчанию скрываем подменю */
+    //visibility: visible;
+    transition-property: opacity, visibility !important; /* Важно чтобы transition применялось к обоим свойствам */
+    transition-duration: 0.2s !important; /* Добавляем анимацию 0.3 сек. */
+    transition-delay: 0.15s !important; /* Добавляем задержку в 0.15 сек. */
+    &:hover {
+        transition: 0.5s !important;
+        background-color: #216796 !important;
+        //opacity: 1; /* Показываем подменю при ховере */
+        //visibility: visible;
+    }
+
+    .catalog_dropdown {
+        margin-top: 53px !important;
+        background: #595959 !important;
+        text-align: center !important;
+        padding-bottom: 5px !important;
+        z-index: 1;
+
+        .catalog_dropdown > ul > li > button:hover {
+            background-color: #216796 !important;
+        }
+    }
+
+    li:hover {
+        background-color: #216796 !important;
+        transition: 0.5s !important;
+    }    
+}
+.form {
+    display: flex;
+    width: 100%;
+}
+#list {
+    width: 100%;
 }
