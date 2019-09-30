@@ -28,12 +28,40 @@ namespace eoc_kmvk.ru.Controllers {
         /// <param name="categoryId">Номер категории с фронта, по которому будем фильтровать изображения работ</param>
         /// <returns></returns>
         public IActionResult GetDetailsImage(GetCategory category, string id) {
-            // Если получили параметр главной страницы, то возвращаемся на нее
-            if (id == "main") {
-                return RedirectToAction("Index");
+            // Проверяем входной параметр id с фронта и в зависимости от него выполняем действия
+            switch (id) {
+                case "main":
+                    return RedirectToAction("Index");
+                case "contacts":
+                    return RedirectToAction("Contacts");
+                case "documentation":
+                    return RedirectToAction("Documentation");
+                case "foto_collection":
+                    return RedirectToAction("PhotoGallery");
             }
             var data = category.GetCategoryFromDB(id);
             return View(data);
+        }
+        /// <summary>
+        /// Страница контактов
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Contacts() {
+            return View();
+        }
+        /// <summary>
+        /// Страница документации
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Documentation() { 
+            return View();
+        }
+        /// <summary>
+        /// Страница фотогалереи
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult PhotoGallery() {
+            return View();
         }
     }
 }

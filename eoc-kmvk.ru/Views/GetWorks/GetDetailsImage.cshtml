@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Главная</title>
+    <title>Подробнее</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/css/HeaderStyles.css" rel="stylesheet" />
     <link href="~/css/MainStyles.css" rel="stylesheet" />
@@ -69,9 +69,9 @@
                                                     <li><button id="list" type="submit" value="6" name="id" class="btn-link">Корпуса КмВК, кронштейны, металлические боксы</button></li>
                                                 </ul>
                                             </li>
-                                            <li><button class="btn-link">ФОТОГАЛЕРЕЯ</button></li>
-                                            <li><button class="btn-link">КОНТАКТЫ</button></li>
-                                            <li><button class="btn-link">ДОКУМЕНТАЦИЯ</button></li>
+                                            <li><button id="list" type="submit" value="foto_collection" name="id" class="btn-link">ФОТОГАЛЕРЕЯ</button></li>
+                                            <li><button id="list" type="submit" value="contacts" name="id" class="btn-link">КОНТАКТЫ</button></li>
+                                            <li><button id="list" type="submit" value="documentation" name="id" class="btn-link">ДОКУМЕНТАЦИЯ</button></li>
                                         </ul>
                                     </nav>
                                 </form>
@@ -82,22 +82,26 @@
             </div>
             <!--Выгружаем первые изображения, которые будут являться категориями
             При нажатии также переходим на страницу с конкретными изображениями работ-->
-            <div class="photo_projects">
+            <div id="id_details_photo" class="photo_projects">
                 @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
                 @foreach (var item in Model) {
-                    <div id="idImages">
+                    <div id="idImages col-lg-8" class="details_image">
                         <button class="img_work btn-link">
                             <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
                             <p id="idTitle" class="text-center text-details">@item.NameWork</p>
                             <p id="idTitle" class="hidden">@item.Category</p>
                         </button>
                     </div>
+                    <div class="col-lg-4">
+                        <p id="idTitle" class="text-details">@item.DetailsWork</p>
+                    </div>
                 }
             </div>
         </div>
     </div>
+    <!-- Футер -->
     <div class="footer">
-        <span>© 2019. ООО «Электро Оптик Контроль». Все права защищены</span>
+        <span>* — предоплата 100%, безналичный расчет, договор поставки (при необходимости), срок поставки крупных партий товара - не более 2-х месяцев.<br />© 2019. ООО «Электро Оптик Контроль». Все права защищены</span>
     </div>
 </body>
 </html>

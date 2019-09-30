@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Главная</title>
+    <title>Фотогалерея</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/css/HeaderStyles.css" rel="stylesheet" />
     <link href="~/css/MainStyles.css" rel="stylesheet" />
@@ -80,22 +80,8 @@
                     </div>
                 </div>
             </div>
-            <!--Выгружаем первые изображения, которые будут являться категориями
-            При нажатии также переходим на страницу с конкретными изображениями работ-->
-            <div class="photo_projects">
-                @model IEnumerable<eoc_kmvk.ru.Models.GetWorks>
-                @foreach (var item in Model) {
-                <div id="idImages">
-                    <form class="form" asp-action="GetDetailsImage" asp-controller="GetWorks" method="post">
-                        <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
-                            <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
-                            <p id="idTitle" class="text-center text-details">@item.NameWork</p>
-                            <p id="idTitle" class="hidden">@item.Category</p>
-                        </button>
-                    </form>
-                </div>
-                }
-            </div>
+            <!-- Документация -->
+            <h1>Здесь ожидается фотогалерея</h1>
         </div>
     </div>
     <!-- Футер -->

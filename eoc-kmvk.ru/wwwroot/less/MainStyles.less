@@ -16,11 +16,13 @@
     margin-top: 5px;
     margin: 0 auto;
 }
+
 .wrapper_content {
     //height: 100%;
     //background-color: #E2E2E2;
     margin-top: 5px;
 }
+
 .wrapper_fon {
     height: 100%;
     //background-color: #E2E2E2;
@@ -41,6 +43,7 @@
         border: none;
     }
 }
+
 .photo_projects {
     margin-top: 10px;
     display: flex;
@@ -57,9 +60,17 @@
         /*box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);*/
         position: relative;
     }
+    // При фокусе на изображения убираем ненужные эффекты
+    .img_work {
+        outline: none;
 
-    .img_work:hover {
-        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
     }
 }
 
@@ -69,13 +80,18 @@
     font-family: 'Open Sans',sans-serif;
     margin-top: 10px;
 }
-
+// Описание к изображениям
+.details_image {
+    margin-left: 0;
+    margin-right: 0;
+}
+/*#id_details_photo {
+    flex-direction: column;
+}*/
 //--------------------------------------------------------------------
-
 /*#idImages:hover .block {
     display: block;
 }*/
-
 /*.block {
     position: absolute;
     left: 5px;
@@ -84,7 +100,6 @@
     padding: 20px;
     display: none;
 }*/
-
 /*#idTTitle {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -100,3 +115,58 @@
     text-align: center;
 }*/
 //--------------------------------------------------------------------
+
+// Стили для адаптивности
+/* xs (<=543px) */
+@media (max-width: 575px) {
+    * {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .wrapper_content {
+        margin-top: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .wrapper_fon {
+        width: 800px;
+    }
+}
+    
+    // md (>=768 и <=991)
+    @media (min-width: 768px) and (max-width: 991px) {
+        * {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .wrapper_content {
+            margin-top: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .wrapper_fon {
+            width: 800px;
+        }
+    }
+    // lg (>=992 и <=1199)
+    @media (min-width: 992px) and (max-width: 1199px) {
+        * {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .wrapper_content {
+            margin-top: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .wrapper_fon {
+            width: 800px;
+        }
+    }
+
