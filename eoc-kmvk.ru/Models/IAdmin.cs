@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Collections;
+using Microsoft.AspNetCore.Http;
 
 namespace eoc_kmvk.ru.Models {
     /// <summary>
@@ -33,5 +34,13 @@ namespace eoc_kmvk.ru.Models {
         /// <param name="id">Параметр с фронта</param>
         /// <returns></returns>
         IEnumerable GetWorksFromDB(string id);
+        /// <summary>
+        /// Метод добабвления в БД
+        /// </summary>
+        /// <param name="form">Для изображений</param>
+        /// <param name="user_title_image">Заголовок изображения</param>
+        /// <param name="user_details">Описание изображения</param> 
+        /// <returns></returns>
+        IEnumerable AddDataInDB(IFormCollection form, string user_title_image, string user_details, string user_price, string user_nds, string user_category_image);
     }
 }

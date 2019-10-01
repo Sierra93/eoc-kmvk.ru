@@ -19,7 +19,7 @@ namespace eoc_kmvk.ru.Models {
                     string extension = Path.GetExtension(fileName);     // Получаем расширение файла
                     if (extension == ".png" || extension == ".jpg") {
                         // Прописываем путь к папке, в которую будем сохранять новые изображения
-                        string filePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images"));
+                        string filePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/photo_projects"));
                         using(var fileStream = new FileStream(Path.Combine(filePath, fileName), FileMode.Create)) {
                             await file.CopyToAsync(fileStream);
                             isCopied = true;

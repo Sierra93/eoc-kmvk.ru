@@ -85,8 +85,11 @@
             <form asp-action="MainPage" asp-controller="Admin" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <label>Заголовок изображения: </label><input type="text" name="user_title_image" id="user_title_image" /><br />
-                    <label>Изображение: </label><input type="file" name="user_image" id="user_image" /><br />
                     <label>Детальное описание: </label><input type="text" name="user_details" id="user_details" /><br />
+                    <label>Изображение: </label><input type="file" name="user_image" id="user_image" /><br />
+                    <label>Цена: </label><input type="text" name="user_price" id="user_price" /><br />
+                    <label>Цена без НДС: </label><input type="text" name="user_nds" id="user_nds" /> <br />
+                    <label>Категория: </label><input type="text" name="user_category_image" id="user_category_image" />
                 </div>
                 <div class="form-group">
 
