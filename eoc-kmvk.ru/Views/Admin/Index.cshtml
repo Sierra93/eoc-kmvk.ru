@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Выбор страницы для изменений</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/HeaderStyles.css" rel="stylesheet" />
+    <link href="~/css/MainStyles.css" rel="stylesheet" />
+    <link href="~/css/FooterStyles.css" rel="stylesheet" />
+    <link href="~/css/AdminStyles.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery-1.11.3.min.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body>
+    <div class="main hidden-xs">
+        <div class="row">
+            <div class="container page_before_header">
+                <div class="col-lg-4 logo">
+                    <img src="~/images/logo.png" alt="Компания eoc" />
+                    <img src="~/images/big-black-divider-n.png" alt="|" />
+                </div>
+                <div class="col-lg-6 title">
+                    <img src="~/images/name_company.png" />
+                    @*<p>«Электро Оптик Контроль»</p>
+                        <b>Изготовление корпусов для видеокамер</b>*@
+                </div>
+                <div class="col-lg-2 right_logo">
+                    <img src="~/images/right_logo1.png" alt="Логотип с названием сайта" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper_fon">
+        <div class="wrapper_content">
+            @* Блок основгого контента *@
+            <div class="wrapper">
+                <div class="container-fluid">
+                    @*<div id="header" class="clearfix">*@
+                    <div class="row">
+                        @* Меню хидера *@
+                        @* nav - помещает навигацию сайта и отдельные ссылки *@
+                        @*<div role="navigation" class="navbar">*@
+                        @* Элементы меню *@
+                        <div class="container head">
+                            @* Реализация бургера при маленьком экране *@
+                            <div class="navbar-header">
+                                @* data-target="#navbarCollapse" - при нажатии на кнопку мы будем отображать блок с id = navbarCollapse, т.е наше меню *@
+                                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                                    <span class="sr-only"> Toogle navigation </span>
+                                    <span class="icon-bar"> </span>
+                                    <span class="icon-bar"> </span>
+                                    <span class="icon-bar"> </span>
+                                </button>
+                            </div>
+                            @* navbar-right - прижимает навигацию к правому краю *@
+                            @* Здесь id="navbarCollapse" нужен для того, чтобы на мобильных устройствах появился бургер с вертикальным меню *@
+                            <div id="navbarCollapse" class="header">
+                                <form class="form" asp-action="GetDetailsImage" asp-controller="GetWorks" method="post">
+                                    <nav class="menu">
+                                        <ul>
+                                            <li><button id="list" type="submit" value="main" name="id" class="btn-link">ГЛАВНАЯ</button></li>
+                                            <li class="katalog">
+                                                <button class="btn-link">КАТАЛОГ</button>
+                                                <ul class="catalog_dropdown">
+                                                    <li><button id="list" type="submit" value="1" name="id" class="btn-link">Видеокамеры в корпусах КмВК</button></li>
+                                                    <li><button id="list" type="submit" value="2" name="id" class="btn-link">Видеокамеры в корпусах КмВК-Т</button></li>
+                                                    <li><button id="list" type="submit" value="3" name="id" class="btn-link">Видеокамеры в корпусах КмВК-Л</button></li>
+                                                    <li><button id="list" type="submit" value="4" name="id" class="btn-link">Видеокамеры на кронштейнах</button></li>
+                                                    <li><button id="list" type="submit" value="5" name="id" class="btn-link">Комплекты для видеонаблюдения</button></li>
+                                                    <li><button id="list" type="submit" value="6" name="id" class="btn-link">Корпуса КмВК, кронштейны, металлические боксы</button></li>
+                                                </ul>
+                                            </li>
+                                            <li><button id="list" type="submit" value="foto_collection" name="id" class="btn-link">ФОТОГАЛЕРЕЯ</button></li>
+                                            <li><button id="list" type="submit" value="contacts" name="id" class="btn-link">КОНТАКТЫ</button></li>
+                                            <li><button id="list" type="submit" value="documentation" name="id" class="btn-link">ДОКУМЕНТАЦИЯ</button></li>
+                                        </ul>
+                                    </nav>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Выбираем какую страницу хотим изменять и отправляем на бэк -->
+            <div class="change_main_page">
+                <h3>Выберите страницу для изменений</h3><br />
+                <form id="data" asp-controller="Admin" asp-action="Index" method="post">
+                    <p>
+                        <select name="changes" form="data">
+                            <option value="main">Главная</option>
+                            <option value="photo_gallery">Фотогалерея</option>
+                            <option value="contacts">Контакты</option>
+                            <option value="documentation">Документация</option>
+                        </select>
+                    </p>
+                    <p><input type="submit" form="data" value="Начать" /></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Футер -->
+    <div class="footer">
+        <span>* — предоплата 100%, безналичный расчет, договор поставки (при необходимости), срок поставки крупных партий товара - не более 2-х месяцев.<br />© 2019. ООО «Электро Оптик Контроль». Все права защищены</span>
+    </div>
+</body>
+</html>

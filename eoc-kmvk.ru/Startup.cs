@@ -49,6 +49,12 @@ namespace eoc_kmvk.ru {
                     name: "default",
                     template: "{controller=GetWorks}/{action=Index}/{id?}");
             });
+            // Роут для админки
+            app.UseMvc(routes => {
+                routes.MapRoute(
+                    name: "admin",
+                    template: "{controller=Admin}/{action=Index}/{id?}");
+            });
         }
     }
 }

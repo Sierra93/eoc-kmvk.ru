@@ -10,5 +10,9 @@
   {
     "outputFile": "wwwroot/css/FooterStyles.css",
     "inputFile": "wwwroot/less/FooterStyles.less"
+  },
+  {
+    "outputFile": "wwwroot/css/AdminStyles.css",
+    "inputFile": "wwwroot/less/AdminStyles.less"
   }
 ]
