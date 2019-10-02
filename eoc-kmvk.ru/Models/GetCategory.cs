@@ -26,7 +26,7 @@ namespace eoc_kmvk.ru.Models {
         /// <summary>
         /// Метод для получения изображений
         /// </summary>
-        /// <param name="id">Параметр с фронта по кторому будем фильтровать</param>
+        /// <param name="id">Параметр с фронта по которому будем фильтровать</param>
         /// <returns></returns>
         public IEnumerable GetCategoryFromDB(string id) { 
             var data = GetCategoryImage(id);

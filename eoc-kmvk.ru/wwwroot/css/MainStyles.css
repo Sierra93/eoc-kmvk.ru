@@ -59,6 +59,10 @@
 .photo_projects .img_work:focus {
   outline: none;
 }
+.details_change_page {
+  display: flex;
+  flex-wrap: wrap;
+}
 .text-details {
   color: black;
   font-size: 18px;

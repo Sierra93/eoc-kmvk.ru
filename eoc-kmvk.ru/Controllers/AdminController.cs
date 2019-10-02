@@ -43,7 +43,6 @@ namespace eoc_kmvk.ru.Controllers {
         public IActionResult MainPage(IFormCollection form, string add, string change_data, string delete, string user_title_image, string user_details, string user_price, string user_nds, string user_category_image, AddMain addData) {
             // Проверяем на null каждый из параметров кнопок с фронта. Если null, то идет дальше, если не null, то возьмет значение
             var combineParam = add ?? change_data ?? delete;
-            object data;  // Переменная для передачи измененных данных на страницу
             // В зависимости от нажатой кнопки, будем работать с конкретным классом
             switch (combineParam) {                
                 case "Добавить":
@@ -53,6 +52,43 @@ namespace eoc_kmvk.ru.Controllers {
                     break;
                 case "Удалить":
                     break;
+            }
+            return View();
+        }
+        /// <summary>
+        /// Запрашиваем категорию, которую будем изменять и выведем на форму админки
+        /// </summary>
+        /// <param name="id">Номер категории</param>
+        /// <returns></returns>
+        public IActionResult ChangePage(GetCategory category, string id) { 
+            var data = category.GetCategoryFromDB(id);
+            return View(data);
+        }
+        /// <summary>
+        /// Выведем конкретную работу для ее редактирования
+        /// </summary>
+        /// <param name="change_data"></param>
+        /// /// <param name="number_category">Номер категории</param>
+        /// <returns></returns>
+        public IActionResult GetChangeData(string change_data, string number_category, GetWorks work) {
+            var data = work.GetChangeData(change_data, number_category);
+            return View(data);
+        }
+        /// <summary>
+        /// Изменение данных
+        /// </summary>
+        /// <param name="old_id">Старый id нужен чтобы обновить данные в таблицах</param>
+        /// <param name="user_title_image">Заголовок работы</param>
+        /// <param name="user_details">Описание</param>
+        /// <param name="user_image">Новое изображение</param>
+        /// <param name="user_price">Ценаparam>
+        /// <param name="user_nds">Цена без НДС</param>
+        /// <param name="user_category_image">Номер новой категории</param>
+        /// <returns></returns> 
+        public IActionResult EditData(string old_id, string user_title_image, string user_details, IFormCollection substrPath, string user_price, string user_nds, string user_category_image, EditData edit) {
+            if(old_id != null) {
+                edit.StartEditData(old_id, user_title_image, user_details, substrPath, user_price, user_nds, user_category_image);
+                return Content("Данные успешно изменены");
             }
             return View();
         }

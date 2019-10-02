@@ -32,6 +32,46 @@ namespace eoc_kmvk.ru.Models {
             return data;
         }
         /// <summary>
+        /// ID работы с фронта. По нему получаем работу, которую хотим изменить
+        /// </summary>
+        /// <param name="change_data"></param>
+        /// <returns></returns>
+        public IEnumerable GetChangeData(string change_data, string number_category) {
+            var data = GetChangeDataDB(change_data, number_category);
+            return data;
+        }
+        /// <summary>
+        /// Получаем из БД работу, которую хотим изменить
+        /// </summary>
+        /// <param name="change_data"></param>
+        /// <returns></returns>
+        public List<GetWorks> GetChangeDataDB(string change_data, string number_category) {
+            List<GetWorks> collectionConcreteWork = new List<GetWorks>();
+            string tableName = number_category == "0" ? "WORKS" : "ALL_WORKS";  // Получаем название таблицы по категории
+            using (var con = new SqlConnection(connectionString)) {
+                con.Open();
+                using (var com = new SqlCommand("SELECT * FROM " + tableName + " WHERE ID = " + change_data, con)) {
+                    using (var reader = com.ExecuteReader()) {
+                        if(reader.HasRows) {
+                            while(reader.Read()) {
+                                collectionConcreteWork.Add(new GetWorks {
+                                    ID = Convert.ToInt32(reader["ID"]),
+                                    NameWork = reader["NAME_WORK"].ToString(),
+                                    DetailsWork = reader["DETAILS_WORK"].ToString(),
+                                    ImagePath = reader["IMAGE_PATH"].ToString(),
+                                    Price = Convert.ToDouble(reader["PRICE"]),
+                                    RubCountNotNds = Convert.ToDouble(reader["RUB_COUNT_NOT_NDS"]),
+                                    TermsOfSale = reader["TERMS_OF_SALE"].ToString(),
+                                    Category = Convert.ToInt32(reader["CATEGORY"])
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            return collectionConcreteWork;
+        }
+        /// <summary>
         /// Метод получает список изображений категорий из БД
         /// </summary>
         /// <returns></returns>
