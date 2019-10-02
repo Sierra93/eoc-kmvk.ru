@@ -88,8 +88,8 @@
                 <div id="idImages">
                     <form class="form" asp-action="GetDetailsImage" asp-controller="GetWorks" method="post">
                         <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
-                            <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
                             <p id="idTitle" class="text-center text-details">@item.NameWork</p>
+                            <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
                             <p id="idTitle" class="hidden">@item.Category</p>
                         </button>
                     </form>
@@ -100,7 +100,7 @@
     </div>
     <!-- Футер -->
     <div class="footer">
-        <span>* — предоплата 100%, безналичный расчет, договор поставки (при необходимости), срок поставки крупных партий товара - не более 2-х месяцев.<br />© 2019. ООО «Электро Оптик Контроль». Все права защищены</span>
+        <span>© 2019. ООО «Электро Оптик Контроль». Все права защищены</span>
     </div>
 </body>
 </html>

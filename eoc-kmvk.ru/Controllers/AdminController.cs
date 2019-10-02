@@ -22,7 +22,7 @@ namespace eoc_kmvk.ru.Controllers {
                 case "main":
                     return RedirectToAction("MainPage");
                 case "contacts":
-                    return RedirectToAction("ContactsPage");
+                    return RedirectToAction("Contacts");
                 case "photo_gallery":
                     break;
                 case "documentation":
@@ -93,10 +93,36 @@ namespace eoc_kmvk.ru.Controllers {
             return View();
         }
         /// <summary>
-        /// Метод по работе со страницей контакты
+        /// Удаление данных(получаем всю категорию, среди которой та, которую будем удалять)
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="delete"></param>
         /// <returns></returns>
-        public IActionResult ContactsPage() {
+        public IActionResult DeletePage(string id, GetCategory category) {
+            var data = category.GetCategoryFromDB(id);
+            return View(data);
+        }
+        /// <summary>
+        /// Удаляем конкретную работу
+        /// </summary>
+        /// <param name="old_id"></param>
+        /// <param name="user_title_image"></param>
+        /// <param name="user_details"></param>
+        /// <param name="substrPath"></param>
+        /// <param name="user_price"></param>
+        /// <param name="user_nds"></param>
+        /// <param name="user_category_image"></param>
+        /// <param name="delete"></param>
+        /// <returns></returns>
+        public IActionResult GetDeleteData(string change_data, string number_category, GetWorks work) {
+            var data = work.GetChangeData(change_data, number_category);
+            return View(data);
+        }
+        public IActionResult DeleteData(string old_id, string user_category_image, DeleteData delete) {
+            if(old_id != null) {
+                delete.StartDeleteData(old_id, user_category_image);
+                return Content("Данные успешно удалены");
+            }
             return View();
         }
     }

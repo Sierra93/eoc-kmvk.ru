@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Изменение страницы контактов</title>
+    <title>Главная</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/css/HeaderStyles.css" rel="stylesheet" />
     <link href="~/css/MainStyles.css" rel="stylesheet" />
@@ -80,13 +80,34 @@
                     </div>
                 </div>
             </div>
-            <!-- Изменяем главную страницу -->
-            <h1>Здесь будем изменять контакты</h1>
+            <!--  категорию, среди которой находится та, которую будем удалять -->
+            <div class="photo_projects">
+                @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
+                @foreach (var item in Model) {
+                    <div id="idImages">
+                        <form id="changeFormData" class="form" asp-action="GetDeleteData" asp-controller="Admin" method="post">
+                            <div class="col-lg-7">
+                                <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+                                    <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+                                    <p id="idTitle" class="text-center text-details">@item.NameWork</p>
+                                    <p id="idTitle" class="hidden">@item.Category</p>
+                                    <p id="idTitle" class="hidden">@item.ID</p>
+                                </button>
+                            </div>
+                            <div class="col-lg-5">
+                                <p id="idTitle" class="text-details">@item.DetailsWork</p>
+                                <input type="hidden" name="number_category" id="number_category" value="@item.Category" />
+                                <button type="submit" id="changeFormData" name="change_data" value="@item.ID">Удалить</button>
+                            </div>
+                        </form>
+                    </div>
+                }
+            </div>
         </div>
     </div>
     <!-- Футер -->
     <div class="footer">
-        <span>* — предоплата 100%, безналичный расчет, договор поставки (при необходимости), срок поставки крупных партий товара - не более 2-х месяцев.<br />© 2019. ООО «Электро Оптик Контроль». Все права защищены</span>
+        <span>© 2019. ООО «Электро Оптик Контроль». Все права защищены</span>
     </div>
 </body>
 </html>

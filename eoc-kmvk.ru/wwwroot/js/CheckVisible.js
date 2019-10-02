@@ -27,6 +27,6 @@ let onCheckVisible = () => {
             break;
     }
 };
-let onGetChangeData = () => {
-    let getChangeData = document.getElementById();
+var change = () => {
+    document.getElementsByTagName("p")[0].textContent = "abc";
 };

@@ -43,18 +43,15 @@ namespace eoc_kmvk.ru.Controllers {
             return View(data);
         }
         /// <summary>
-        /// Страница контактов
-        /// </summary>
-        /// <returns></returns>
-        public IActionResult Contacts() {
-            return View();
-        }
-        /// <summary>
         /// Страница документации
         /// </summary>
         /// <returns></returns>
         public IActionResult Documentation() { 
             return View();
+        }
+        public IActionResult Contacts(GetContacts contact) {
+            var data = contact.GetContact();
+            return View(data);
         }
         /// <summary>
         /// Страница фотогалереи

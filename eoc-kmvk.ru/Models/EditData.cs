@@ -91,9 +91,9 @@ namespace eoc_kmvk.ru.Models {
         /// <param name="user_category_image"></param>
         /// <returns></returns>
         public void EditDataInDB(string old_id, string user_title_image, string user_details, string substrPath, string user_price, string user_nds, string user_category_image) {
-            List<EditData> collectionEditData = new List<EditData>();
             string tableName = "";
-            substrPath = substrPath.Replace("\\", "/");
+            substrPath = substrPath.Replace("\\", "/"); // Убираю лишнюю часть пути
+            // Определяем название таблицы по категории
             if (user_category_image == "0") {
                 tableName = "WORKS";
             }
@@ -102,6 +102,7 @@ namespace eoc_kmvk.ru.Models {
             }
             using (var con = new SqlConnection(connectionString)) {
                 con.Open();
+                // Готовим данные для записи в БД
                 using (var com = new SqlCommand("UPDATE " + tableName + " SET NAME_WORK = " + "'" + user_title_image + "'" +
                     " WHERE ID = " + old_id, con)) {
                     using (var com2 = new SqlCommand("UPDATE " + tableName + " SET DETAILS_WORK = " + "'" + user_details + "'" +
@@ -114,6 +115,7 @@ namespace eoc_kmvk.ru.Models {
                                     " WHERE ID = " + old_id, con)) {
                                     using (var com6 = new SqlCommand("UPDATE " + tableName + " SET CATEGORY = " + user_category_image + " WHERE ID = " + old_id, con)) {
                                         try {
+                                            // Записываем новые данные в БД
                                             com.ExecuteNonQuery();
                                             com2.ExecuteNonQuery();
                                             com3.ExecuteNonQuery();

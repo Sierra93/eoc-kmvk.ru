@@ -1,16 +1,14 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Изменение главной страницы</title>
+    <title>Главная</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/css/HeaderStyles.css" rel="stylesheet" />
     <link href="~/css/MainStyles.css" rel="stylesheet" />
     <link href="~/css/FooterStyles.css" rel="stylesheet" />
-    <link href="~/css/AdminStyles.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery-1.11.3.min.js"></script>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" asp-append-version="true" />
-    <script src="~/js/CheckVisible.js"></script>
 </head>
 <body>
     <div class="main hidden-xs">
@@ -82,71 +80,55 @@
                     </div>
                 </div>
             </div>
-            <!-- Изменяем главную страницу -->
-            <div class="list_category">
-                <h1>Панель администратора: изменение главной страницы</h1>
-                <h3>Номера категорий</h3>
-                <p>1: Видеокамеры в корпусах КмВК</p>
-                <p>2: Видеокамеры в  корпусах КмВК-Т</p>
-                <p>3: Видеокамеры в корпусах КмВК-Л</p>
-                <p>4: Видеокамеры на кронштейнах</p>
-                <p>5: Комплекты для видеонаблюдения</p>
-                <p>6: Корпуса КмВК, кронштейны, металлические боксы</p>
-                <p>
-                    <select id="checkSelect" name="changes" form="data">
-                        <option value="addData">Добавить данные</option>
-                        <option value="changeData">Изменить данные</option>
-                        <option value="deleteData">Удалить данные</option>
-                    </select>
-                </p>
-                <p><input type="submit" form="data" value="Начать" onclick="onCheckVisible()" /></p>
+            <!--Выгружаем первые изображения, которые будут являться категориями
+            При нажатии также переходим на страницу с конкретными изображениями работ-->
+            <div class="photo_projects">
+                @model IEnumerable<eoc_kmvk.ru.Models.GetWorks>
+                @foreach (var item in Model) {
+                    <div id="idImages">
+                        <form id="changeFormData" class="form" asp-action="GetChangeData" asp-controller="Admin" method="post">
+                            <div class="col-lg-7">
+                                <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+                                    <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+                                    <p id="idTitle" class="text-center text-details">@item.NameWork</p>
+                                    <p id="idTitle" class="hidden">@item.Category</p>
+                                    <p id="idTitle" class="hidden">@item.ID</p>
+                                </button>
+                            </div>
+                            <div class="col-lg-5">
+                                <p id="idTitle" class="text-details">@item.DetailsWork</p>
+                                @*<input type="hidden" name="number_category" id="number_category" value="@item.Category" />
+                                    <button type="submit" id="changeFormData" name="change_data" value="@item.ID">Изменить</button>*@
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Изменяем данные -->
+                    <form asp-action="DeleteData" asp-controller="Admin" enctype="multipart/form-data" method="post">
+                        <div class="form-group">
+                            @*<label>Заголовок изображения: </label><input type="text" name="user_title_image" id="user_title_image" /><br />
+                            <label>Детальное описание: </label><input type="text" name="user_details" id="user_details" /><br />
+                            <label>Изображение: </label><input type="file" name="user_image" id="user_image" /><br />
+                            <label>Цена: </label><input type="text" name="user_price" id="user_price" /><br />
+                            <label>Цена без НДС: </label><input type="text" name="user_nds" id="user_nds" /> <br />
+                            <label>Категория(номер): </label><input type="text" name="user_category_image" id="user_category_image" />*@
+                            @*<input type="hidden" name="edit_id" id="edit_id" value="@item.ID" />*@
+                            @*<input type="hidden" name="edit_image" id="edit_image" value="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+                                <input type="hidden" name="edit_name_work" id="edit_name_work" value="@item.NameWork" />
+                                <input type="hidden" name="edit_category" id="edit_category" value="@item.Category" />
+                                <input type="hidden" name="edit_details" id="edit_details" value="@item.DetailsWork" />*@
+                        </div>
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" value="@item.ID" name="old_id" id="old_id" class="btn btn-default">Удалить</button>
+                        </div>
+                    </form>
+                }
             </div>
-            <!-- Добавление -->
-            <form id="addForm" class="hidden" asp-action="MainPage" asp-controller="Admin" enctype="multipart/form-data" method="post">
-                <div class="form-group panel_add">
-                    <label>Заголовок изображения: </label><input type="text" name="user_title_image" id="user_title_image" /><br />
-                    <label>Детальное описание: </label><input type="text" name="user_details" id="user_details" /><br />
-                    <label>Изображение: </label><input type="file" name="user_image" id="user_image" /><br />
-                    <label>Цена: </label><input type="text" name="user_price" id="user_price" /><br />
-                    <label>Цена без НДС: </label><input type="text" name="user_nds" id="user_nds" /> <br />
-                    <label>Категория(номер): </label><input type="text" name="user_category_image" id="user_category_image" />
-                </div>
-                <div class="form-group">
+            @*<form id="addForm" asp-action="MainPage" asp-controller="Admin" enctype="multipart/form-data" method="post">
 
-                </div>
-                <div class="form-group btn_panel_add">
-                    <input type="submit" value="Добавить" name="add" id="add" class="btn btn-default" />
-                </div>
-            </form>
-            <!-- Получение категории для изменения -->
-            <form id="changeForm" class="hidden" asp-action="ChangePage" asp-controller="Admin" enctype="multipart/form-data" method="post">
-                <div class="form-group">
-                    <label>Введите категорию(номер): </label><input type="text" name="id" id="id" />
-                    @*<label>Заголовок изображения: </label><input type="text" name="user_title_image" id="user_title_image" /><br />
-                <label>Детальное описание: </label><input type="text" name="user_details" id="user_details" /><br />
-                <label>Изображение: </label><input type="file" name="user_image" id="user_image" /><br />
-                <label>Цена: </label><input type="text" name="user_price" id="user_price" /><br />
-                <label>Цена без НДС: </label><input type="text" name="user_nds" id="user_nds" /> <br />*@
-                </div>
-                <div class="form-group">
-
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Далее" name="change_data" id="change" class="btn btn-default" />
-                </div>
-            </form>
-            <!-- Удаление -->
-            <form id="deleteForm" class="hidden" asp-action="DeletePage" asp-controller="Admin" enctype="multipart/form-data" method="post">
-                <div class="form-group">
-                    <label>Введите категорию(номер): </label><input type="text" name="id" id="id" />
-                </div>
-                <div class="form-group">
-
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Далее" name="delete_data" id="delete" class="btn btn-default" />
-                </div>
-            </form>
+                </form>*@
         </div>
     </div>
     <!-- Футер -->
