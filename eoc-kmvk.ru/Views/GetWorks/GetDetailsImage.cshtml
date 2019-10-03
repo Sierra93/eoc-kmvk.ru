@@ -6,9 +6,14 @@
     <link href="~/css/HeaderStyles.css" rel="stylesheet" />
     <link href="~/css/MainStyles.css" rel="stylesheet" />
     <link href="~/css/FooterStyles.css" rel="stylesheet" />
-    <script src="~/lib/jquery/dist/jquery-1.11.3.min.js"></script>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" asp-append-version="true" />
+    <!-- Нужно для плагина фоторама для фоторамы изображений -->
+    <!-- jQuery 1.8 or later, 33 KB -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 </head>
 <body>
     <div class="main">
@@ -82,18 +87,36 @@
             </div>
             <!--Выгружаем первые изображения, которые будут являться категориями
             При нажатии также переходим на страницу с конкретными изображениями работ-->
+            <!-- Add images to <div class="fotorama"></div> -->
+            @*<div class="fotorama" data-width="400" data-height="340" data-nav="thumbs">
+                    <img src="http://s.fotorama.io/1.jpg">
+                    <img src="http://s.fotorama.io/2.jpg">
+                </div>*@
+
             <div id="id_details_photo" class="photo_projects">
                 @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
                 @foreach (var item in Model) {
-                    <div id="idImages col-lg-8" class="details_image">
-                        <button class="img_work btn-link">
-                            <p id="idTitle" class="text-center text-details">@item.NameWork</p>
-                            <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
-                            <p id="idTitle" class="hidden">@item.Category</p>
-                        </button>
-                    </div>
-                    <div class="col-lg-4">
-                        <p id="idTitle" class="text-details">@item.DetailsWork</p>
+                    <div class="content">
+                        <div id="idImages col-lg-8" class="details_image">
+                            <button class="img_work btn-link">
+                                <p id="idTitle" class="text-center text-details">@item.NameWork</p>
+                                <div class="fotorama" data-width="400" data-height="340" data-nav="thumbs">
+                                    <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_1.Replace("wwwroot", "~"))" />
+                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_2.Replace("wwwroot", "~"))" />
+                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_3.Replace("wwwroot", "~"))" />
+                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_4.Replace("wwwroot", "~"))" />
+                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_5.Replace("wwwroot", "~"))" />
+                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_6.Replace("wwwroot", "~"))" />
+                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_7.Replace("wwwroot", "~"))" />
+                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_8.Replace("wwwroot", "~"))" />
+                                </div>
+                                <p id="idTitle" class="hidden">@item.Category</p>
+                            </button>
+                        </div>
+                        <div class="col-lg-4">
+                            <p id="idTitle" class="text-details">@item.DetailsWork</p>
+                        </div>
                     </div>
                 }
             </div>

@@ -20,6 +20,14 @@ namespace eoc_kmvk.ru.Models {
         public int Category { get; set; }  // Категория работы
         public string TitlePage { get; set; }  // Название категории страницы, на которую переходим после выбора конкретной категории
         public string DetailsPage { get; set; }    // Описание работы
+        public string ImagePathMiniature_1 { get; set; }
+        public string ImagePathMiniature_2 { get; set; }
+        public string ImagePathMiniature_3 { get; set; }
+        public string ImagePathMiniature_4 { get; set; } 
+        public string ImagePathMiniature_5 { get; set; }
+        public string ImagePathMiniature_6 { get; set; }
+        public string ImagePathMiniature_7 { get; set; }
+        public string ImagePathMiniature_8 { get; set; }
 
         // Метод получения изображений работ из БД
         public abstract IEnumerable GetWorksFromDB(string id);

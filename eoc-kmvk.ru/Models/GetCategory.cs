@@ -22,6 +22,14 @@ namespace eoc_kmvk.ru.Models {
         public int Category { get; set; }   // Категория работы
         public string TitlePage { get; set; }  // Название категории страницы, на которую переходим после выбора конкретной категории
         public string DetailsPage { get; set; }    // Описание работы
+        public string ImagePathMiniature_1 { get; set; }
+        public string ImagePathMiniature_2 { get; set; }
+        public string ImagePathMiniature_3 { get; set; }
+        public string ImagePathMiniature_4 { get; set; }
+        public string ImagePathMiniature_5 { get; set; }
+        public string ImagePathMiniature_6 { get; set; }
+        public string ImagePathMiniature_7 { get; set; }
+        public string ImagePathMiniature_8 { get; set; }
 
         /// <summary>
         /// Метод для получения изображений
@@ -64,7 +72,15 @@ namespace eoc_kmvk.ru.Models {
                                     TermsOfSale = reader["TERMS_OF_SALE"].ToString(),
                                     Category = Convert.ToInt32(reader["CATEGORY"]),
                                     TitlePage = reader["TITLE_PAGE"].ToString(),
-                                    DetailsPage = reader["DETAILS_PAGE"].ToString()
+                                    DetailsPage = reader["DETAILS_PAGE"].ToString(),
+                                    ImagePathMiniature_1 = reader["IMAGE_PATH_MINIATURE_1"].ToString(),
+                                    ImagePathMiniature_2 = reader["IMAGE_PATH_MINIATURE_2"].ToString(),
+                                    ImagePathMiniature_3 = reader["IMAGE_PATH_MINIATURE_3"].ToString(),
+                                    ImagePathMiniature_4 = reader["IMAGE_PATH_MINIATURE_4"].ToString(),
+                                    ImagePathMiniature_5 = reader["IMAGE_PATH_MINIATURE_5"].ToString(),
+                                    ImagePathMiniature_6 = reader["IMAGE_PATH_MINIATURE_6"].ToString(),
+                                    ImagePathMiniature_7 = reader["IMAGE_PATH_MINIATURE_7"].ToString(),
+                                    ImagePathMiniature_8 = reader["IMAGE_PATH_MINIATURE_8"].ToString()
                                 });
                             }
                         }

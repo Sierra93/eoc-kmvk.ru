@@ -89,9 +89,19 @@
     margin-left: 0;
     margin-right: 0;
 }
-/*#id_details_photo {
-    flex-direction: column;
-}*/
+// Стили для ровного выравнивания контента(изображений с текстом)
+.content {
+    display: flex;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
+}
+// Рамка миниатюр при движении
+.fotorama__thumb-border {
+    /*transition-duration: 360ms !important;
+    transform: translate3d(110px, 0px, 0px) !important;
+    width: 60px !important;*/
+    display: none;
+}
 //--------------------------------------------------------------------
 /*#idImages:hover .block {
     display: block;
@@ -119,7 +129,6 @@
     text-align: center;
 }*/
 //--------------------------------------------------------------------
-
 // Стили для адаптивности
 /* xs (<=543px) */
 @media (max-width: 575px) {

@@ -12,19 +12,23 @@ let onCheckVisible = () => {
     let visibleForm;    // Какую форму будем показывать
     // Показываем нужную форму
     switch (value) {
+        // Добавление данных
         case "addData":
             visibleForm = document.getElementById("addForm");
             visibleForm.classList.replace("hidden", "visible");
             break;
+        // Изменение данных
         case "changeData":
             visibleForm = document.getElementById("changeForm");
             //visibleForm = document.getElementsByClassName("category");
             visibleForm.classList.replace("hidden", "visible");
             break;
+        // Удаление данных
         case "deleteData":
             visibleForm = document.getElementById("deleteForm");
             visibleForm.classList.replace("hidden", "visible");
             break;
+        // Добавление миниатюр
     }
 };
 var change = () => {

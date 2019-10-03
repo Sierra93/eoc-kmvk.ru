@@ -17,6 +17,14 @@ namespace eoc_kmvk.ru.Models {
         double RubCountNotNds { get; set; } // Руб/шт(без НДС)
         string TermsOfSale { get; set; }    // Условия продажи
         int Category { get; set; }  // Категория работы
+        string ImagePathMiniature_1 { get; set; }
+        string ImagePathMiniature_2 { get; set; }
+        string ImagePathMiniature_3 { get; set; }
+        string ImagePathMiniature_4 { get; set; }
+        string ImagePathMiniature_5 { get; set; } 
+        string ImagePathMiniature_6 { get; set; }
+        string ImagePathMiniature_7 { get; set; }
+        string ImagePathMiniature_8 { get; set; }
 
         /// <summary>
         /// Метод получения работ из БД
