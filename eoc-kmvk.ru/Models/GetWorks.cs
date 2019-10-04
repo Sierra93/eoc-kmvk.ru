@@ -113,5 +113,58 @@ namespace eoc_kmvk.ru.Models {
             }
             return collectionWorks;
         }
+        /// <summary>
+        /// Получаем список миниатюр для возврата во вью
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IEnumerable GetMiniature(string id_delete) { 
+            var data = GetMiniatureList(id_delete);
+            return data;
+        }
+        /// <summary>
+        /// Извлечение списка миниатюр для выбора конкретной
+        /// </summary>
+        public List<GetWorks> GetMiniatureList(string id_delete) {
+            List<GetWorks> collectionMiniatures = new List<GetWorks>();
+            // Подключаемся к БД
+            using (var con = new SqlConnection(connectionString)) {
+                con.Open();
+                // Sql-запрос фильтрующий фото в зависимости от категории пришедшей с фронта
+                using (var com = new SqlCommand("SELECT * " +
+                    "FROM ALL_WORKS " +
+                    "WHERE ID = " + id_delete, con)) {
+                    // Выполняем запрос
+                    using (var reader = com.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            while (reader.Read()) {
+                                // Добавляем отфильтрованные данные в коллекцию для вывода на фронт
+                                collectionMiniatures.Add(new GetWorks {
+                                    ID = Convert.ToInt32(reader["ID"]),
+                                    NameWork = reader["NAME_WORK"].ToString(),
+                                    DetailsWork = reader["DETAILS_WORK"].ToString(),
+                                    ImagePath = reader["IMAGE_PATH"].ToString(),
+                                    Price = Convert.ToDouble(reader["PRICE"]),
+                                    RubCountNotNds = Convert.ToDouble(reader["RUB_COUNT_NOT_NDS"]),
+                                    TermsOfSale = reader["TERMS_OF_SALE"].ToString(),
+                                    Category = Convert.ToInt32(reader["CATEGORY"]),
+                                    //TitlePage = reader["TITLE_PAGE"].ToString(),
+                                    //DetailsPage = reader["DETAILS_PAGE"].ToString(),
+                                    ImagePathMiniature_1 = reader["IMAGE_PATH_MINIATURE_1"].ToString(),
+                                    ImagePathMiniature_2 = reader["IMAGE_PATH_MINIATURE_2"].ToString(),
+                                    ImagePathMiniature_3 = reader["IMAGE_PATH_MINIATURE_3"].ToString(),
+                                    ImagePathMiniature_4 = reader["IMAGE_PATH_MINIATURE_4"].ToString(),
+                                    ImagePathMiniature_5 = reader["IMAGE_PATH_MINIATURE_5"].ToString(),
+                                    ImagePathMiniature_6 = reader["IMAGE_PATH_MINIATURE_6"].ToString(),
+                                    ImagePathMiniature_7 = reader["IMAGE_PATH_MINIATURE_7"].ToString(),
+                                    ImagePathMiniature_8 = reader["IMAGE_PATH_MINIATURE_8"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            return collectionMiniatures;
+        }
     }
 }

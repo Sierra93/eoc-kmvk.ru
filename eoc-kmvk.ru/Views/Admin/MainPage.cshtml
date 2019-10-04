@@ -151,7 +151,7 @@
                 </div>
             </form>
             <!-- Добавление миниатюры -->
-            <form id="addMiniatureForm" class="hidden" asp-action="DeletePage" asp-controller="Admin" enctype="multipart/form-data" method="post">
+            <form id="addMiniatureForm" class="hidden" asp-action="AddMiniature" asp-controller="Admin" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <label>В какой категории находится изображение(номер): </label><input type="text" name="id" id="id" />
                 </div>
@@ -159,7 +159,31 @@
 
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Далее" name="delete_data" id="delete" class="btn btn-default" />
+                    <input type="submit" value="Далее" name="add_miniature" id="add_miniature" class="btn btn-default" />
+                </div>
+            </form>
+            <!-- Изменение миниатюр -->
+            <form id="changeMiniatureForm" class="hidden" asp-action="ChangeMiniature" asp-controller="Admin" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <label>В какой категории находится изображение(номер): </label><input type="text" name="id" id="id" />
+                </div>
+                <div class="form-group">
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Далее" name="change_miniature" id="change_miniature" class="btn btn-default" />
+                </div>
+            </form>
+            <!-- Удаление миниатюр -->
+            <form id="deleteMiniatureForm" class="hidden" asp-action="DeleteMiniature" asp-controller="Admin" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <label>В какой категории находится изображение(номер): </label><input type="text" name="id" id="id" />
+                </div>
+                <div class="form-group">
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Далее" name="delete_miniature" id="delete_miniature" class="btn btn-default" />
                 </div>
             </form>
         </div>

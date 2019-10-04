@@ -124,6 +124,34 @@ namespace eoc_kmvk.ru.Controllers {
                 return Content("Данные успешно удалены");
             }
             return View();
+        }        
+        public IActionResult AddMiniature(string id) {
+            return View();
+        }
+        /// <summary>
+        /// Удаление миниатюры изображений
+        /// </summary>
+        /// <param name="id">id категории изображения, по которому будем искать конкретную миниатюру</param>
+        /// <returns></returns>
+        public IActionResult DeleteMiniature(string id, GetCategory category) {
+            var data = category.GetCategoryFromDB(id);
+            return View(data);
+        }
+        /// <summary>
+        /// Выводим список миниатюр конкретного изображения для удаления
+        /// </summary>
+        /// <param name="id_delete">id изображения, по которому выведем все миниатюры</param>
+        /// <returns></returns>
+        public IActionResult GetDeleteMiniature(string id_delete, GetWorks image) {
+            var data = image.GetMiniature(id_delete);
+            return View(data);
+        }
+        public IActionResult FinallyDeleteMiniature(string value, string id, string category, DeleteData delete_miniature) { 
+            if(value != null && id != null) {
+                delete_miniature.FinalDeleteMiniature(value, id, category);
+                return Content("Миниатюра успешно удалена");
+            }
+            return View();
         }
     }
 }

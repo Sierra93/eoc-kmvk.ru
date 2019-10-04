@@ -9,6 +9,13 @@
     <script src="~/lib/jquery/dist/jquery-1.11.3.min.js"></script>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" asp-append-version="true" />
+    <script src="~/js/Miniature.js"></script>
+    <!-- Нужно для плагина фоторама для фоторамы изображений -->
+    <!-- jQuery 1.8 or later, 33 KB -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 </head>
 <body>
     <div class="main hidden-xs">
@@ -82,24 +89,32 @@
             </div>
             <!-- Выводим категорию, среди которой находится та, которую будем удалять -->
             <div class="photo_projects">
-                @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
+                @model IEnumerable<eoc_kmvk.ru.Models.GetWorks>
                 @foreach (var item in Model) {
                     <div id="idImages">
-                        <form id="changeFormData" class="form" asp-action="GetDeleteData" asp-controller="Admin" method="post">
-                            <div class="col-lg-7">
+                        <form id="changeFormData" class="form" onclick="PostIdMiniature(value, @item.ID, @item.Category)">
+                            @*<form id="changeFormData" class="form" asp-action="FinallyDeleteMiniature" asp-controller="Admin" method="post">*@
+                            <div class="col-lg-8">
                                 <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
-                                    <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
-                                    <p id="idTitle" class="text-center text-details">@item.NameWork</p>
-                                    <p id="idTitle" class="hidden">@item.Category</p>
-                                    <p id="idTitle" class="hidden">@item.ID</p>
+                                    @*<img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />*@
+                                    <img onclick="PostIdMiniature(1, @item.ID, @item.Category)" class="line-1" src="@Url.Content(item.ImagePathMiniature_1.Replace("wwwroot", "~"))" />
+                                    <img onclick="PostIdMiniature(2, @item.ID, @item.Category)" class="line-1" src="@Url.Content(item.ImagePathMiniature_2.Replace("wwwroot", "~"))" />
+                                    <img onclick="PostIdMiniature(3, @item.ID, @item.Category)" class="line-1" src="@Url.Content(item.ImagePathMiniature_3.Replace("wwwroot", "~"))" />
+                                    <img onclick="PostIdMiniature(4, @item.ID, @item.Category)" class="line-1" src="@Url.Content(item.ImagePathMiniature_4.Replace("wwwroot", "~"))" />
+                                    <img onclick="PostIdMiniature(5, @item.ID, @item.Category)" class="line-1" src="@Url.Content(item.ImagePathMiniature_5.Replace("wwwroot", "~"))" />
+                                    <img onclick="PostIdMiniature(6, @item.ID, @item.Category)" class="line-1" src="@Url.Content(item.ImagePathMiniature_6.Replace("wwwroot", "~"))" />
+                                    <img onclick="PostIdMiniature(7, @item.ID, @item.Category)" class="line-1" src="@Url.Content(item.ImagePathMiniature_7.Replace("wwwroot", "~"))" />
+                                    <img onclick="PostIdMiniature(8, @item.ID, @item.Category)" class="line-1" src="@Url.Content(item.ImagePathMiniature_8.Replace("wwwroot", "~"))" />
+                                    @*<p id="idTitle" class="text-center text-details">@item.NameWork</p>*@
                                 </button>
                             </div>
-                            <div class="col-lg-5">
+                            <div class="col-lg-4">
                                 <p id="idTitle" class="text-details">@item.DetailsWork</p>
                                 <input type="hidden" name="number_category" id="number_category" value="@item.Category" />
-                                <button type="submit" id="changeFormData" name="change_data" value="@item.ID">Удалить</button>
+                                <button type="submit" id="changeFormData" class="btn btn-link" name="id_delete" value="@item.ID">Удалить</button>
                             </div>
                         </form>
+                        @*</form>*@
                     </div>
                 }
             </div>

@@ -75,14 +75,24 @@
 }
 .content {
   display: flex;
-  margin-bottom: 10px;
-  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
+  margin-bottom: 20px;
+  border: 1px solid;
 }
 .fotorama__thumb-border {
   /*transition-duration: 360ms !important;
     transform: translate3d(110px, 0px, 0px) !important;
     width: 60px !important;*/
   display: none;
+}
+.fotorama__stage__frame fotorama__loaded fotorama__loaded--img fotorama__active > img {
+  width: 0 !important;
+  height: 0!important;
+  left: 0!important;
+  top: 0!important;
+}
+.fotorama__nav-wrap {
+  width: 87%;
+  margin-left: 50px;
 }
 /*#idImages:hover .block {
     display: block;

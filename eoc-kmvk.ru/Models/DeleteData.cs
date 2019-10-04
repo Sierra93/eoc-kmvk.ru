@@ -23,6 +23,14 @@ namespace eoc_kmvk.ru.Models {
         public int Category { get; set; }  // Категория работы
         public string TitlePage { get; set; }  // Название категории страницы, на которую переходим после выбора конкретной категории
         public string DetailsPage { get; set; }    // Описание работы
+        public string ImagePathMiniature_1 { get; set; }
+        public string ImagePathMiniature_2 { get; set; }
+        public string ImagePathMiniature_3 { get; set; }
+        public string ImagePathMiniature_4 { get; set; }
+        public string ImagePathMiniature_5 { get; set; }
+        public string ImagePathMiniature_6 { get; set; }
+        public string ImagePathMiniature_7 { get; set; }
+        public string ImagePathMiniature_8 { get; set; }
 
         // Метод получения изображений работ из БД
         public IEnumerable GetWorksFromDB(string id) {
@@ -107,6 +115,39 @@ namespace eoc_kmvk.ru.Models {
                         com.ExecuteNonQuery();
                     }
                     catch(Exception ex) {
+                        throw new Exception(ex.Message.ToString());
+                    }
+                }
+            }
+        }
+        public IEnumerable FinalDeleteMiniature(string value, string id, string category) {
+            DeleteMiniature(value, id, category);
+            return "OK";
+        }
+        /// <summary>
+        /// Удаляем выбранную миниатюру
+        /// </summary>
+        /// <param name="value">Номер столбца ImagePathMiniature в БД, в который будем записывать NULL для удаления</param>
+        /// <param name="id">id изображения в таблице</param>
+        /// <param name="category">Номер категории</param>
+        public void DeleteMiniature(string value, string id, string category) {
+            string tableName = "";
+            // Проверяем категорию и получаем название таблицы
+            if (category == "0") {
+                tableName = "WORKS";
+            }
+            else {
+                tableName = "ALL_WORKS";
+            }
+            using (var con = new SqlConnection(connectionString)) {
+                con.Open();
+                using (var com = new SqlCommand("UPDATE " + tableName + 
+                    " SET IMAGE_PATH_MINIATURE_" + value + " = 'NULL'" +
+                    " WHERE ID = " + id, con)) {
+                    try {
+                        com.ExecuteNonQuery();
+                    }
+                    catch (Exception ex) {
                         throw new Exception(ex.Message.ToString());
                     }
                 }

@@ -29,8 +29,19 @@ let onCheckVisible = () => {
             visibleForm.classList.replace("hidden", "visible");
             break;
         // Добавление миниатюр
+        case "addMiniature":
+            visibleForm = document.getElementById("addMiniatureForm");
+            visibleForm.classList.replace("hidden", "visible");
+            break;
+        // Изменение миниатюр
+        case "changeMiniature":
+            visibleForm = document.getElementById("changeMiniatureForm");
+            visibleForm.classList.replace("hidden", "visible");
+            break;
+        // Удаление миниатюр
+        case "deleteMiniature":
+            visibleForm = document.getElementById("deleteMiniatureForm");
+            visibleForm.classList.replace("hidden", "visible");
+            break;
     }
-};
-var change = () => {
-    document.getElementsByTagName("p")[0].textContent = "abc";
 };

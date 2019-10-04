@@ -21,6 +21,14 @@ namespace eoc_kmvk.ru.Models {
         int Category { get; set; }  // Категория работы
         string TitlePage { get; set; }  // Название категории страницы, на которую переходим после выбора конкретной категории
         string DetailsPage { get; set; }    // Описание работы
+        string ImagePathMiniature_1 { get; set; }
+        string ImagePathMiniature_2 { get; set; }
+        string ImagePathMiniature_3 { get; set; }
+        string ImagePathMiniature_4 { get; set; }
+        string ImagePathMiniature_5 { get; set; }
+        string ImagePathMiniature_6 { get; set; }
+        string ImagePathMiniature_7 { get; set; }
+        string ImagePathMiniature_8 { get; set; }
 
         /// <summary>
         /// Метод получения работ из БД
