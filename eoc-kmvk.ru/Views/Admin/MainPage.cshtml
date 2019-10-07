@@ -97,9 +97,9 @@
                         <option value="addData">Добавить данные</option>
                         <option value="changeData">Изменить данные</option>
                         <option value="deleteData">Удалить данные</option>
-                        <option value="addMiniature">Добавить миниатюру</option>
+                        @*<option value="addMiniature">Добавить миниатюру</option>
                         <option value="changeMiniature">Изменить миниатюру</option>
-                        <option value="deleteMiniature">Удалить миниатюру</option>
+                        <option value="deleteMiniature">Удалить миниатюру</option>*@
                     </select>
                 </p>
                 <p><input type="submit" form="data" value="Начать" onclick="onCheckVisible()" /></p>
@@ -151,7 +151,7 @@
                 </div>
             </form>
             <!-- Добавление миниатюры -->
-            <form id="addMiniatureForm" class="hidden" asp-action="AddMiniature" asp-controller="Admin" enctype="multipart/form-data" method="post">
+            <form id="addMiniatureForm" class="hidden" asp-action="GetAddListMiniature" asp-controller="Admin" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <label>В какой категории находится изображение(номер): </label><input type="text" name="id" id="id" />
                 </div>

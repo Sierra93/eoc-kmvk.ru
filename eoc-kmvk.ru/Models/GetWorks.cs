@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace eoc_kmvk.ru.Models {
     /// <summary>
@@ -114,12 +116,12 @@ namespace eoc_kmvk.ru.Models {
             return collectionWorks;
         }
         /// <summary>
-        /// Получаем список миниатюр для возврата во вью
+        /// Получаем конкретную строку, в которую будем добавлть новую миниатюру
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id_delete">Строка в БД в которую будем вставлять миниатюру</param>
         /// <returns></returns>
         public IEnumerable GetMiniature(string id_delete) { 
-            var data = GetMiniatureList(id_delete);
+            var data = GetMiniatureList(id_delete);            
             return data;
         }
         /// <summary>
@@ -127,6 +129,7 @@ namespace eoc_kmvk.ru.Models {
         /// </summary>
         public List<GetWorks> GetMiniatureList(string id_delete) {
             List<GetWorks> collectionMiniatures = new List<GetWorks>();
+            string empty = "";
             // Подключаемся к БД
             using (var con = new SqlConnection(connectionString)) {
                 con.Open();
@@ -163,8 +166,94 @@ namespace eoc_kmvk.ru.Models {
                         }
                     }
                 }
+            }            
+            // Ищем пустой столбец в строке с id_delete, чтобы понять в какой вставлять миниатюру
+            foreach (var item in collectionMiniatures) {
+                // Ищем пустой столбец в объекте data
+                if (item.ImagePathMiniature_1 == "") {
+                    empty = "IMAGE_PATH_MINIATURE_1";
+                }
+                else if (item.ImagePathMiniature_2 == "") {
+                    empty = "IMAGE_PATH_MINIATURE_2";
+                }
+                else if (item.ImagePathMiniature_3 == "") {
+                    empty = "IMAGE_PATH_MINIATURE_3";
+                }
+                else if (item.ImagePathMiniature_4 == "") {
+                    empty = "IMAGE_PATH_MINIATURE_4";
+                }
+                else if (item.ImagePathMiniature_5 == "") {
+                    empty = "IMAGE_PATH_MINIATURE_5";
+                }
+                else if (item.ImagePathMiniature_6 == "") {
+                    empty = "IMAGE_PATH_MINIATURE_6";
+                }
+                else if (item.ImagePathMiniature_7 == "") {
+                    empty = "IMAGE_PATH_MINIATURE_7";
+                }
+                else if (item.ImagePathMiniature_8 == "") {
+                    empty = "IMAGE_PATH_MINIATURE_8";
+                }
+                else {
+                    throw new Exception("Нет ячейки для новой миниатюры");
+                }
             }
+            //AddMiniature(empty);
             return collectionMiniatures;
         }
+        /// <summary>
+        /// Вызываем метод вставки миниатюры в БД
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable GetListMiniatures(string catalog_miniature, string new_miniature, string category_name) {
+            string storePath;
+            // Проверяем какую категорию выбрали в ту и сохраним
+            //if (category_name == "0") {
+            //    storePath = "wwwroot/images/photo_projects";
+            //}
+            //else if (category_name == "1") {
+            //    storePath = "wwwroot/images/photo_kmvk_1";
+            //}
+            //else if (category_name == "2") {
+            //    storePath = "wwwroot/images/photo_kmvk_2";
+            //}
+            //else if (category_name == "3") {
+            //    storePath = "wwwroot/images/photo_kmvk_3";
+            //}
+            //else if (category_name == "4") {
+            //    storePath = "wwwroot/images/photo_kmvk_4";
+            //}
+            //else if (category_name == "5") {
+            //    storePath = "wwwroot/images/photo_kmvk_5";
+            //}
+            //else {
+            //    storePath = "wwwroot/images/photo_kmvk_6";
+            //}
+            //// Полный локальный путь к файлу включая папку проекта wwwroot
+            //var path = Path.Combine(Directory.GetCurrentDirectory(), storePath, catalog_miniature.Files[0].FileName);
+            //var substrPath = path.Substring(path.IndexOf("wwwroot"));   // Обрезаю лишнюю часть пути и беру только с wwwroot
+            //using (var stream = new FileStream(path, FileMode.Create)) {
+            //    catalog_miniature.Files[0].CopyToAsync(stream);
+            //}
+            //AddMiniaturesDB(substrPath, new_miniature, category_name);
+            return "Миниатюра успешно добавлена";
+            ////AddMiniaturesDB(new_miniature, category_name);
+            //return "OK";
+        }
+        /// <summary>
+        /// Запись миниатюры в БД
+        /// </summary>
+        /// <param name="new_miniature">Новое название миниатюры</param>
+        /// <param name="category_name">Номер категории</param>
+        //public void AddMiniaturesDB(string new_miniature, string category_name, string substrPath) {
+        //    if(new_miniature != null && category_name != null) {
+        //        using (var con = new SqlConnection(connectionString)) {
+        //            con.Open();
+        //            using (var com = new SqlCommand("", con)) {
+
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

@@ -34,6 +34,17 @@
 .line-1:hover {
   border: none;
 }
+.line-2 {
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+  margin-left: 0px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
+}
+.details {
+  display: flex;
+  margin: 0 auto;
+}
 .photo_projects {
   margin-top: 10px;
   display: flex;

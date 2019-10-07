@@ -14,6 +14,7 @@
     <!-- Fotorama from CDNJS, 19 KB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <script src="~/js/OpenImageWindow.js"></script>
 </head>
 <body>
     <div class="main">
@@ -97,24 +98,24 @@
                 @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
                 @foreach (var item in Model) {
                     <div class="content">
-                        <div id="idImages col-lg-8" class="details_image">
+                        <div id="idImages col-lg-4" class="details_image">
                             <button class="img_work btn-link">
                                 <p id="idTitle" class="text-center text-details">@item.NameWork</p>
-                                <div id="idFotorama" class="fotorama" data-width="400" data-height="340" data-nav="thumbs">
-                                    <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
-                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_1.Replace("wwwroot", "~"))" />
-                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_2.Replace("wwwroot", "~"))" />
-                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_3.Replace("wwwroot", "~"))" />
-                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_4.Replace("wwwroot", "~"))" />
-                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_5.Replace("wwwroot", "~"))" />
-                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_6.Replace("wwwroot", "~"))" />
-                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_7.Replace("wwwroot", "~"))" />
-                                    <img class="line-1" src="@Url.Content(item.ImagePathMiniature_8.Replace("wwwroot", "~"))" />
-                                </div>
+                                @*<div id="idFotorama" class="fotorama" data-width="400" data-height="340" data-nav="thumbs">*@
+                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_1.Replace("wwwroot", "~"))" />
+                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_2.Replace("wwwroot", "~"))" />
+                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_3.Replace("wwwroot", "~"))" />
+                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_4.Replace("wwwroot", "~"))" />
+                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_5.Replace("wwwroot", "~"))" />
+                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_6.Replace("wwwroot", "~"))" />
+                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_7.Replace("wwwroot", "~"))" />
+                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_8.Replace("wwwroot", "~"))" />
+                                @*</div>*@
                                 <p id="idTitle" class="hidden">@item.Category</p>
                             </button>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-8 details">
                             <p id="idTitle" class="text-details">@item.DetailsWork</p>
                         </div>
                     </div>

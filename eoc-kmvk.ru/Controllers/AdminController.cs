@@ -125,7 +125,35 @@ namespace eoc_kmvk.ru.Controllers {
             }
             return View();
         }        
-        public IActionResult AddMiniature(string id) {
+
+        /// <summary>
+        /// Получаем всю категорию изображений для добавления в нее миниатюры
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IActionResult GetAddListMiniature(string id, GetCategory add_miniature) {
+            var data = add_miniature.GetMiniatureList(id); 
+            return View(data);
+        }
+        /// <summary>
+        /// Переводим на страницу ввода названия новой миниатюры
+        /// </summary>
+        /// <param name="id_add_miniature">id изображения</param>
+        /// <param name="mitiature"></param>
+        /// <returns></returns>
+        public IActionResult PageNameNewMiniature(string id_add_miniature, GetWorks mitiature) {                          
+            return View();
+        }
+        /// <summary>
+        /// Переход к методу для добавления новой миниатюры в БД
+        /// </summary>
+        /// <param name="new_miniature">Название новой миниатюры</param>
+        /// <param name="miniature">Объект класса</param>
+        /// <returns></returns>
+        public IActionResult AddMiniature(string new_miniature, string category_name, string catalog_miniature, GetWorks miniature) {
+            if(new_miniature != null && category_name != null) {
+                miniature.GetListMiniatures(new_miniature, category_name, catalog_miniature);
+            }
             return View();
         }
         /// <summary>

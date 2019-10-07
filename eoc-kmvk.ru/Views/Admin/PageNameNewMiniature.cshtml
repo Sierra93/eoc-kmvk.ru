@@ -86,34 +86,20 @@
                     </div>
                 </div>
             </div>
-            <!-- Выводим категорию, среди которой находится та, которую будем удалять -->
+            <!-- Вводим название новой миниатюры -->
             <div class="photo_projects">
-                @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
+                @model IEnumerable<eoc_kmvk.ru.Models.GetWorks>
                 @foreach (var item in Model) {
                     <div id="idImages">
-                        <form id="changeFormData" class="form" asp-action="GetDeleteMiniature" asp-controller="Admin" method="post">
-                            <div class="col-lg-8">
-                                <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
-                                    <div class="fotorama" data-width="400" data-height="340" data-nav="thumbs">
-                                        <p id="idTitle" class="text-center text-details">@item.NameWork</p>
-                                        <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
-                                        <img class="line-1" src="@Url.Content(item.ImagePathMiniature_1.Replace("wwwroot", "~"))" />
-                                        <img class="line-1" src="@Url.Content(item.ImagePathMiniature_2.Replace("wwwroot", "~"))" />
-                                        <img class="line-1" src="@Url.Content(item.ImagePathMiniature_3.Replace("wwwroot", "~"))" />
-                                        <img class="line-1" src="@Url.Content(item.ImagePathMiniature_4.Replace("wwwroot", "~"))" />
-                                        <img class="line-1" src="@Url.Content(item.ImagePathMiniature_5.Replace("wwwroot", "~"))" />
-                                        <img class="line-1" src="@Url.Content(item.ImagePathMiniature_6.Replace("wwwroot", "~"))" />
-                                        <img class="line-1" src="@Url.Content(item.ImagePathMiniature_7.Replace("wwwroot", "~"))" />
-                                        <img class="line-1" src="@Url.Content(item.ImagePathMiniature_8.Replace("wwwroot", "~"))" />
-                                    </div>                                    
-                                    <p id="idTitle" class="hidden">@item.Category</p>
-                                    <p id="idTitle" class="hidden">@item.ID</p>
-                                </button>
+                        <form id="addFormData" class="form" asp-action="AddMiniature" asp-controller="Admin" method="post">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Выберите новую миниатюру</label><input type="file" />
+                                    <input class="hidden" type="text" name="category_name" id="category_name" value="@item.Category" />
+                                </div>
                             </div>
-                            <div class="col-lg-4">
-                                <p id="idTitle" class="text-details">@item.DetailsWork</p>
-                                <input type="hidden" name="number_category" id="number_category" value="@item.Category" />
-                                <button type="submit" id="changeFormData" class="btn btn-default" name="id_delete" value="@item.ID">Выбрать миниатюру для удаления</button>
+                            <div class="form-group">
+                                <button type="submit" value="@item.ID" name="new_miniature" id="new_miniature" class="btn btn-default">Добавить</button>
                             </div>
                         </form>
                     </div>
