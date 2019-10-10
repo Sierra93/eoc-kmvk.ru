@@ -94,33 +94,68 @@
                     <img src="http://s.fotorama.io/2.jpg">
                 </div>*@
 
-            <div id="id_details_photo" class="photo_projects">
-                @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
-                @foreach (var item in Model) {
-                    <div class="content">
-                        <div id="idImages col-lg-4" class="details_image">
-                            <button class="img_work btn-link">
-                                <p id="idTitle" class="text-center text-details">@item.NameWork</p>
-                                @*<div id="idFotorama" class="fotorama" data-width="400" data-height="340" data-nav="thumbs">*@
-                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
-                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_1.Replace("wwwroot", "~"))" />
-                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_2.Replace("wwwroot", "~"))" />
-                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_3.Replace("wwwroot", "~"))" />
-                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_4.Replace("wwwroot", "~"))" />
-                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_5.Replace("wwwroot", "~"))" />
-                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_6.Replace("wwwroot", "~"))" />
-                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_7.Replace("wwwroot", "~"))" />
-                                    <img class="line-2" onclick = 'openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_8.Replace("wwwroot", "~"))" />
-                                @*</div>*@
-                                <p id="idTitle" class="hidden">@item.Category</p>
-                            </button>
-                        </div>
-                        <div class="col-lg-8 details">
-                            <p id="idTitle" class="text-details">@item.DetailsWork</p>
-                        </div>
-                    </div>
-                }
+        <div id="id_details_photo" class="photo_projects">
+            @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
+            @foreach (var item in Model) {
+            <div class="col-lg-12">
+                <p>@item.DetailsPage</p>
             </div>
+            <div class="content">
+                <div id="idImages" class="details_image col-lg-10">
+                    <button class="img_work btn-link">
+                        <p id="idTitle" class="text-center text-details">@item.NameWork</p>
+                        @*<div id="idFotorama" class="fotorama" data-width="400" data-height="340" data-nav="thumbs">*@
+                        <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+                        <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_1.Replace("wwwroot", "~"))" />
+                        <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_2.Replace("wwwroot", "~"))" />
+                        <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_3.Replace("wwwroot", "~"))" />
+                        <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_4.Replace("wwwroot", "~"))" />
+                        <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_5.Replace("wwwroot", "~"))" />
+                        <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_6.Replace("wwwroot", "~"))" />
+                        <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_7.Replace("wwwroot", "~"))" />
+                        <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_8.Replace("wwwroot", "~"))" />
+                        <table border="1" class="table-main">
+                            <tr class="table-title">
+                                <th class="text-center">Стоимость</th>
+                                <th class="text-center">руб/шт(без НДС)</th>
+                                <th class="text-center">Условия продажи</th>
+                            </tr>
+                            <tr>
+                                <td>Розничная</td>
+                                <td>00 000.00</td>
+                                <td>Покупка от 1 до 3 шт.</td>
+                            </tr>
+                            <tr>
+                                <td>Мелкий опт</td>
+                                <td>00 000.00</td>
+                                <td>Покупка от 4 до 12 шт.</td>
+                            </tr>
+                            <tr>
+                                <td>Крупный опт</td>
+                                <td>00 000.00</td>
+                                <td>Покупка от 13 до 20 шт.</td>
+                            </tr>
+                            <tr>
+                                <td>Специальное предложение-1</td>
+                                <td>00 000.00</td>
+                                <td>Покупка от 21 до 30 шт или периодические покупки от 10 до 20 шт.</td>
+                            </tr>
+                            <tr>
+                                <td>Специальное предложение-2</td>
+                                <td>00 000.00</td>
+                                <td>Покупка от 31 шт или периодические покупки от 20 шт.</td>
+                            </tr>
+                        </table>
+                        @*</div>*@
+                        <p id="idTitle" class="hidden">@item.Category</p>
+                    </button>
+                </div>
+                <div class="col-lg-4 details">
+                    <p id="idTitle" class="text-details">@item.DetailsWork</p>
+                </div>
+            </div>
+                }
+        </div>
         </div>
     </div>
     <!-- Футер -->
