@@ -53,7 +53,7 @@ namespace eoc_kmvk.ru {
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "admin",
-                    template: "{controller=Admin}/{action=Index}/{id?}");
+                    template: "{controller=Admin}/{action=Login}/{id?}");
             });
         }
     }

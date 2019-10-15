@@ -10,16 +10,16 @@
 }*/
 .wrapper {
   height: 100%;
-  background-color: #E2E2E2;
   margin-top: 5px;
   margin: 0 auto;
+  background-color: #baebce;
 }
 .wrapper_content {
   margin-top: 5px;
 }
 .wrapper_fon {
   height: 100%;
-  background-image: url(../images/behinde_fon.png);
+  background-color: #baebce;
   margin-left: -110px;
   margin-right: -110px;
   z-index: 0;
@@ -44,6 +44,8 @@
 .details {
   display: flex;
   margin: 0 auto;
+  border: 1px solid;
+  margin-left: 85px;
 }
 .photo_projects {
   margin-top: 10px;
@@ -87,6 +89,8 @@
 .content {
   display: flex;
   margin-bottom: 20px;
+}
+.main-block {
   border: 1px solid;
 }
 .fotorama__thumb-border {
@@ -109,6 +113,11 @@
   margin-top: 20px;
   color: black;
   cursor: text;
+  margin-left: 85px;
+  margin-bottom: 10px;
+}
+.weight {
+  font-weight: 600;
 }
 /*#idImages:hover .block {
     display: block;

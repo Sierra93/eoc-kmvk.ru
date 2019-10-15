@@ -11,6 +11,7 @@ namespace eoc_kmvk.ru.Controllers {
     /// Контроллер админки, в котором происходят все изменения
     /// </summary>
     public class AdminController : Controller {
+        string truePassword = "111";
         /// <summary>
         /// Метод, который принимает входной параметр с фронта и определяем, с какой страницей мы хотим работать
         /// </summary>
@@ -27,6 +28,8 @@ namespace eoc_kmvk.ru.Controllers {
                     break;
                 case "documentation":
                     break;
+                case "password":
+                    return RedirectToAction("CheckLogin");
             }
             return View();
         }
@@ -180,6 +183,26 @@ namespace eoc_kmvk.ru.Controllers {
                 return Content("Миниатюра успешно удалена");
             }
             return View();
+        }
+        // Страница авторизации
+        public IActionResult Login(string password) {
+            return View();
+        }
+        /// <summary>
+        /// Проверяем пароль
+        /// </summary>
+        /// <param name="password">Пароль к админке</param>
+        /// <returns></returns>
+        public JsonResult Check(string password) {
+            if (password != null) {
+                if(password == truePassword) {
+                    return Json("success");
+                }
+                else {
+                    throw new Exception("Неверный пароль");
+                }
+            }
+            return Json("");
         }
     }
 }

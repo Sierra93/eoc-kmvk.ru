@@ -12,9 +12,10 @@
 // Основной контент включая хидер
 .wrapper {
     height: 100%;
-    background-color: #E2E2E2;
+    //background-color: #E2E2E2;
     margin-top: 5px;
     margin: 0 auto;
+    background-color: #baebce;
 }
 
 .wrapper_content {
@@ -26,7 +27,8 @@
 .wrapper_fon {
     height: 100%;
     //background-color: #E2E2E2;
-    background-image: url(../images/behinde_fon.png);
+    //background-image: url(../images/behinde_fon.png);
+    background-color: #baebce;
     margin-left: -110px;
     margin-right: -110px;
     z-index: 0;
@@ -55,6 +57,8 @@
 .details {
     display: flex;
     margin: 0 auto;
+    border: 1px solid;
+    margin-left: 85px;
 }
 
 .photo_projects {
@@ -95,7 +99,7 @@
     color: black;
     font-size: 18px;
     font-family: 'Open Sans',sans-serif;
-    margin-top: 10px;
+    margin-top: 10px;    
 }
 // Описание к изображениям
 .details_image {
@@ -106,8 +110,11 @@
 .content {
     display: flex;
     margin-bottom: 20px;
-    border: 1px solid;
+    //border: 1px solid;
     //box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
+}
+.main-block {
+    border: 1px solid;
 }
 // Рамка миниатюр при движении
 .fotorama__thumb-border {
@@ -131,6 +138,12 @@
     margin-top: 20px;
     color: black;
     cursor: text;
+    margin-left: 85px;
+    margin-bottom: 10px;
+}
+// Стили для заголовков изображений
+.weight {
+    font-weight: 600;
 }
 //--------------------------------------------------------------------
 /*#idImages:hover .block {
