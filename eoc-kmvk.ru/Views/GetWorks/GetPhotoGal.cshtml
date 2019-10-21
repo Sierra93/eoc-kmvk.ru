@@ -1,24 +1,17 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Подробнее</title>
+    <title>Фотогалерея</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/css/HeaderStyles.css" rel="stylesheet" />
     <link href="~/css/MainStyles.css" rel="stylesheet" />
     <link href="~/css/FooterStyles.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery-1.11.3.min.js"></script>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" asp-append-version="true" />
-    <!-- Нужно для плагина фоторама для фоторамы изображений -->
-    <!-- jQuery 1.8 or later, 33 KB -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Fotorama from CDNJS, 19 KB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-    <script src="~/js/OpenImageWindow.js"></script>
-    <script src="~/js/OptimizeWindow.js"></script>
 </head>
 <body>
-    <div class="main">
+    <div class="main hidden-xs">
         <div class="row">
             <div class="container page_before_header">
                 <div class="col-lg-4 logo">
@@ -27,8 +20,6 @@
                 </div>
                 <div class="col-lg-6 title">
                     <img src="~/images/name_company.png" />
-                    @*<p>«Электро Оптик Контроль»</p>
-                        <b>Изготовление корпусов для видеокамер</b>*@
                 </div>
                 <div class="col-lg-2 right_logo">
                     <img src="~/images/right_logo1.png" alt="Логотип с названием сайта" />
@@ -89,70 +80,20 @@
             </div>
             <!--Выгружаем первые изображения, которые будут являться категориями
             При нажатии также переходим на страницу с конкретными изображениями работ-->
-        <div id="id_details_photo" class="photo_projects">
-            @model IEnumerable<eoc_kmvk.ru.Models.GetCategory>
-            @foreach (var item in Model) {
-                <div class="col-lg-12">
-                    <p>@item.DetailsPage</p>
-                </div>
-                <div class="main-block">
-                    <div class="content">
-                        <div id="idImages" class="details_image col-lg-12">
-                            <button class="img_work btn-link">
-                                <p id="idTitle" class="text-center text-details weight">@item.NameWork</p>
-                                @*<div id="idFotorama" class="fotorama" data-width="400" data-height="340" data-nav="thumbs">*@
-                                <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
-                                <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_1.Replace("wwwroot", "~"))" />
-                                <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_2.Replace("wwwroot", "~"))" />
-                                <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_3.Replace("wwwroot", "~"))" />
-                                <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_4.Replace("wwwroot", "~"))" />
-                                <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_5.Replace("wwwroot", "~"))" />
-                                <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_6.Replace("wwwroot", "~"))" />
-                                <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_7.Replace("wwwroot", "~"))" />
-                                <img class="line-2" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePathMiniature_8.Replace("wwwroot", "~"))" />
-                                @*</div>*@
+            <div id="id_details_photo" class="photo_projects">
+                @model IEnumerable<eoc_kmvk.ru.Models.GetPhoto>
+                @foreach (var item in Model) {
+                    <div id="idImages" class="details_image">
+                        <form class="form" asp-action="GetPhotoGallery" asp-controller="GetWorks" method="post">
+                            <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+                                @*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
+                                <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
                                 <p id="idTitle" class="hidden">@item.Category</p>
                             </button>
-                        </div>
+                        </form>
                     </div>
-                    <div class="col-lg-10 details">
-                        <p id="idTitle" class="text-details">@item.DetailsWork</p>
-                    </div>
-                    <table border="1" class="table-main col-lg-10">
-                        <tr class="table-title">
-                            <th class="text-center">Стоимость</th>
-                            <th class="text-center">руб/шт(без НДС)</th>
-                            <th class="text-center">Условия продажи</th>
-                        </tr>
-                        <tr>
-                            <td>Розничная</td>
-                            <td>@item.PriceRoznica</td>
-                            <td>Покупка от 1 до 3 шт.</td>
-                        </tr>
-                        <tr>
-                            <td>Мелкий опт</td>
-                            <td>@item.PriceOpt</td>
-                            <td>Покупка от 4 до 12 шт.</td>
-                        </tr>
-                        <tr>
-                            <td>Крупный опт</td>
-                            <td>@item.PriceBigOpt</td>
-                            <td>Покупка от 13 до 20 шт.</td>
-                        </tr>
-                        <tr>
-                            <td>Специальное предложение-1</td>
-                            <td>@item.PriceSpec_1</td>
-                            <td>Покупка от 21 до 30 шт или периодические покупки от 10 до 20 шт.</td>
-                        </tr>
-                        <tr>
-                            <td>Специальное предложение-2</td>
-                            <td>@item.PriceSpec_2</td>
-                            <td>Покупка от 31 шт или периодические покупки от 20 шт.</td>
-                        </tr>
-                    </table>
-                </div>
-            }
-        </div>
+                }
+            </div>
         </div>
     </div>
     <!-- Футер -->

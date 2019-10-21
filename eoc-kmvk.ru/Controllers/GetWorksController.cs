@@ -27,7 +27,7 @@ namespace eoc_kmvk.ru.Controllers {
         /// <param name="category">Используем объект класса для получения доступа к его методам</param>
         /// <param name="categoryId">Номер категории с фронта, по которому будем фильтровать изображения работ</param>
         /// <returns></returns>
-        public IActionResult GetDetailsImage(GetCategory category, string id) {
+        public IActionResult GetDetailsImage(GetCategory category, GetPhoto photo, string id) {
             // Проверяем входной параметр id с фронта и в зависимости от него выполняем действия
             switch (id) {
                 case "main":
@@ -36,8 +36,10 @@ namespace eoc_kmvk.ru.Controllers {
                     return RedirectToAction("Contacts");
                 case "documentation":
                     return RedirectToAction("Documentation");
-                case "foto_collection":
-                    return RedirectToAction("PhotoGallery");
+                //case "foto_collection":
+                //    var model = GetPhotoGal(photo);
+                //    return View(model);
+                    //return RedirectToAction("PhotoGallery");
             }
             var data = category.GetCategoryFromDB(id);
             return View(data);
@@ -59,6 +61,15 @@ namespace eoc_kmvk.ru.Controllers {
         /// <returns></returns>
         public IActionResult PhotoGallery() {
             return View();
+        }
+        /// <summary>
+        /// Получает фото для фото галереи
+        /// </summary>
+        /// <param name="photo"></param>
+        /// <returns></returns>
+        public IActionResult GetPhotoGal(GetPhoto photo) { 
+            var model = photo.GetPhotoWork();
+            return View(model);
         }
     }
 }

@@ -51,29 +51,36 @@
                             </div>
                             @* navbar-right - прижимает навигацию к правому краю *@
                             @* Здесь id="navbarCollapse" нужен для того, чтобы на мобильных устройствах появился бургер с вертикальным меню *@
-                            <div id="navbarCollapse" class="header">
-                                <form class="form" asp-action="GetDetailsImage" asp-controller="GetWorks" method="post">
-                                    <nav class="menu">
-                                        <ul>
-                                            <li><button id="list" type="submit" value="main" name="id" class="btn-link">ГЛАВНАЯ</button></li>
-                                            <li class="katalog">
-                                                <button class="btn-link">КАТАЛОГ</button>
-                                                <ul class="catalog_dropdown">
-                                                    <li><button id="list" type="submit" value="1" name="id" class="btn-link">Видеокамеры в корпусах КмВК</button></li>
-                                                    <li><button id="list" type="submit" value="2" name="id" class="btn-link">Видеокамеры в корпусах КмВК-Т</button></li>
-                                                    <li><button id="list" type="submit" value="3" name="id" class="btn-link">Видеокамеры в корпусах КмВК-Л</button></li>
-                                                    <li><button id="list" type="submit" value="4" name="id" class="btn-link">Видеокамеры на кронштейнах</button></li>
-                                                    <li><button id="list" type="submit" value="5" name="id" class="btn-link">Комплекты для видеонаблюдения</button></li>
-                                                    <li><button id="list" type="submit" value="6" name="id" class="btn-link">Корпуса КмВК, кронштейны, металлические боксы</button></li>
-                                                </ul>
-                                            </li>
-                                            <li><button id="list" type="submit" value="foto_collection" name="id" class="btn-link">ФОТОГАЛЕРЕЯ</button></li>
-                                            <li><button id="list" type="submit" value="contacts" name="id" class="btn-link">КОНТАКТЫ</button></li>
-                                            <li><button id="list" type="submit" value="documentation" name="id" class="btn-link">ДОКУМЕНТАЦИЯ</button></li>
-                                        </ul>
-                                    </nav>
-                                </form>
-                            </div>
+                        <div id="navbarCollapse" class="header">
+                            <form class="form" asp-action="GetDetailsImage" asp-controller="GetWorks" method="post">
+                                <nav class="menu">
+                                    <ul>
+                                        <li><button id="list" type="submit" value="main" name="id" class="btn-link">ГЛАВНАЯ</button></li>
+                                        <li class="katalog">
+                                            <button class="btn-link">КАТАЛОГ</button>
+                                            <ul class="catalog_dropdown">
+                                                <li><button id="list" type="submit" value="1" name="id" class="btn-link">Видеокамеры в корпусах КмВК</button></li>
+                                                <li><button id="list" type="submit" value="2" name="id" class="btn-link">Видеокамеры в корпусах КмВК-Т</button></li>
+                                                <li><button id="list" type="submit" value="3" name="id" class="btn-link">Видеокамеры в корпусах КмВК-Л</button></li>
+                                                <li><button id="list" type="submit" value="4" name="id" class="btn-link">Видеокамеры на кронштейнах</button></li>
+                                                <li><button id="list" type="submit" value="5" name="id" class="btn-link">Комплекты для видеонаблюдения</button></li>
+                                                <li><button id="list" type="submit" value="6" name="id" class="btn-link">Корпуса КмВК, кронштейны, металлические боксы</button></li>
+                                            </ul>
+                                        </li>
+
+                                        <li><button id="list" type="submit" value="contacts" name="id" class="btn-link">КОНТАКТЫ</button></li>
+                                        <li><button id="list" type="submit" value="documentation" name="id" class="btn-link">ДОКУМЕНТАЦИЯ</button></li>
+                                    </ul>
+                                </nav>
+                            </form>
+                            <form class="form menu" asp-action="GetPhotoGal" asp-controller="GetWorks" method="post">
+                                <ul>
+                                    <li>
+                                        <button id="list" type="submit" value="foto_collection" name="id" class="btn-link">ФОТОГАЛЕРЕЯ</button>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
                         </div>
                     </div>
                 </div>

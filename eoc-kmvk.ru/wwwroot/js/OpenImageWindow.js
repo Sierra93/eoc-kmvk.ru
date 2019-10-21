@@ -1,5 +1,5 @@
 ﻿// Скрипт для увеличение изображения на весь экран при клике по нему
-let openImageWindow = (src) => {
+function openImageWindow(src) {
     var image = new Image();
     image.src = src;
     var width = image.width;

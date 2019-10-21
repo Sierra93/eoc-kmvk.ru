@@ -13,7 +13,11 @@ namespace eoc_kmvk.ru.Models {
         string NameWork { get; set; }   // Название работы
         string DetailsWork { get; set; }    // Детальное описание работы
         string ImagePath { get; set; }  // Изображение работы
-        double Price { get; set; }  // Цена работы
+        double PriceRoznica { get; set; }  // Цена работы
+        double PriceOpt { get; set; }
+        double PriceBigOpt { get; set; }
+        double PriceSpec_1 { get; set; }
+        double PriceSpec_2 { get; set; }
         double RubCountNotNds { get; set; } // Руб/шт(без НДС)
         string TermsOfSale { get; set; }    // Условия продажи
         int Category { get; set; }  // Категория работы

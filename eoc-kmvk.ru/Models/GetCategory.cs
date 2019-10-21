@@ -16,7 +16,11 @@ namespace eoc_kmvk.ru.Models {
         public string NameWork { get; set; }   // Название работы
         public string DetailsWork { get; set; }    // Детальное описание работы
         public string ImagePath { get; set; }  // Изображение работы
-        public double Price { get; set; }  // Цена работы
+        public double PriceRoznica { get; set; }  // Цена работы
+        public double PriceOpt { get; set; }
+        public double PriceBigOpt { get; set; }
+        public double PriceSpec_1 { get; set; }
+        public double PriceSpec_2 { get; set; }
         public double RubCountNotNds { get; set; } // Руб/шт(без НДС)
         public string TermsOfSale { get; set; }    // Условия продажи
         public int Category { get; set; }   // Категория работы
@@ -68,7 +72,11 @@ namespace eoc_kmvk.ru.Models {
                                     NameWork = reader["NAME_WORK"].ToString(),
                                     DetailsWork = reader["DETAILS_WORK"].ToString(),
                                     ImagePath = reader["IMAGE_PATH"].ToString(),
-                                    Price = Convert.ToDouble(reader["PRICE"]),
+                                    PriceRoznica = Convert.ToDouble(reader["PRICE_ROZNICE"]),
+                                    PriceOpt = Convert.ToDouble(reader["PRICE_OPT"]),
+                                    PriceBigOpt = Convert.ToDouble(reader["PRICE_BIG_OPT"]),
+                                    PriceSpec_1 = Convert.ToDouble(reader["PRICE_SPEC_1"]),
+                                    PriceSpec_2 = Convert.ToDouble(reader["PRICE_SPEC_2"]),
                                     RubCountNotNds = Convert.ToDouble(reader["RUB_COUNT_NOT_NDS"]),
                                     TermsOfSale = reader["TERMS_OF_SALE"].ToString(),
                                     Category = Convert.ToInt32(reader["CATEGORY"]),
@@ -117,7 +125,11 @@ namespace eoc_kmvk.ru.Models {
                                     NameWork = reader["NAME_WORK"].ToString(),
                                     DetailsWork = reader["DETAILS_WORK"].ToString(),
                                     ImagePath = reader["IMAGE_PATH"].ToString(),
-                                    Price = Convert.ToDouble(reader["PRICE"]),
+                                    PriceRoznica = Convert.ToDouble(reader["PRICE_ROZNICE"]),
+                                    PriceOpt = Convert.ToDouble(reader["PRICE_OPT"]),
+                                    PriceBigOpt = Convert.ToDouble(reader["PRICE_BIG_OPT"]),
+                                    PriceSpec_1 = Convert.ToDouble(reader["PRICE_SPEC_1"]),
+                                    PriceSpec_2 = Convert.ToDouble(reader["PRICE_SPEC_2"]),
                                     RubCountNotNds = Convert.ToDouble(reader["RUB_COUNT_NOT_NDS"]),
                                     TermsOfSale = reader["TERMS_OF_SALE"].ToString(),
                                     Category = Convert.ToInt32(reader["CATEGORY"]),
