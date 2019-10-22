@@ -6,9 +6,16 @@
     <link href="~/css/HeaderStyles.css" rel="stylesheet" />
     <link href="~/css/MainStyles.css" rel="stylesheet" />
     <link href="~/css/FooterStyles.css" rel="stylesheet" />
-    <script src="~/lib/jquery/dist/jquery-1.11.3.min.js"></script>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" asp-append-version="true" />
+    <!-- Нужно для плагина фоторама для фоторамы изображений -->
+    <!-- jQuery 1.8 or later, 33 KB -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <script src="~/js/OpenImageWindow.js"></script>
+    <script src="~/js/OptimizeWindow.js"></script>
 </head>
 <body>
     <div class="main hidden-xs">
@@ -83,11 +90,15 @@
             <div id="id_details_photo" class="photo_projects">
                 @model IEnumerable<eoc_kmvk.ru.Models.GetPhoto>
                 @foreach (var item in Model) {
-                    <div id="idImages" class="details_image">
+                    <p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
+                    break;
+                }
+                @foreach (var item in Model) {
+                    <div id="idImages" class="details_image col-lg-4">
                         <form class="form" asp-action="GetPhotoGallery" asp-controller="GetWorks" method="post">
                             <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
                                 @*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
-                                <img class="line-1" src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+                                <img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
                                 <p id="idTitle" class="hidden">@item.Category</p>
                             </button>
                         </form>

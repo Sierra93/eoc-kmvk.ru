@@ -79,7 +79,7 @@ body {
   align-items: center !important;
   color: #f1f1f1 !important;
   /*для горизонтальноо выравнивания*/
-  margin: 0 auto !important;
+  margin-left: 100px;
   z-index: 900 !important;
 }
 .menu ul li,
