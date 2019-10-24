@@ -34,6 +34,7 @@ namespace eoc_kmvk.ru.Models {
         public string ImagePathMiniature_6 { get; set; }
         public string ImagePathMiniature_7 { get; set; }
         public string ImagePathMiniature_8 { get; set; }
+        public string ImageTable { get; set; }
 
         /// <summary>
         /// Метод для получения изображений
@@ -72,11 +73,11 @@ namespace eoc_kmvk.ru.Models {
                                     NameWork = reader["NAME_WORK"].ToString(),
                                     DetailsWork = reader["DETAILS_WORK"].ToString(),
                                     ImagePath = reader["IMAGE_PATH"].ToString(),
-                                    PriceRoznica = Convert.ToDouble(reader["PRICE_ROZNICE"]),
-                                    PriceOpt = Convert.ToDouble(reader["PRICE_OPT"]),
-                                    PriceBigOpt = Convert.ToDouble(reader["PRICE_BIG_OPT"]),
-                                    PriceSpec_1 = Convert.ToDouble(reader["PRICE_SPEC_1"]),
-                                    PriceSpec_2 = Convert.ToDouble(reader["PRICE_SPEC_2"]),
+                                    //PriceRoznica = Convert.ToDouble(reader["PRICE_ROZNICE"]),
+                                    //PriceOpt = Convert.ToDouble(reader["PRICE_OPT"]),
+                                    //PriceBigOpt = Convert.ToDouble(reader["PRICE_BIG_OPT"]),
+                                    //PriceSpec_1 = Convert.ToDouble(reader["PRICE_SPEC_1"]),
+                                    //PriceSpec_2 = Convert.ToDouble(reader["PRICE_SPEC_2"]),
                                     RubCountNotNds = Convert.ToDouble(reader["RUB_COUNT_NOT_NDS"]),
                                     TermsOfSale = reader["TERMS_OF_SALE"].ToString(),
                                     Category = Convert.ToInt32(reader["CATEGORY"]),
@@ -89,7 +90,8 @@ namespace eoc_kmvk.ru.Models {
                                     ImagePathMiniature_5 = reader["IMAGE_PATH_MINIATURE_5"].ToString(),
                                     ImagePathMiniature_6 = reader["IMAGE_PATH_MINIATURE_6"].ToString(),
                                     ImagePathMiniature_7 = reader["IMAGE_PATH_MINIATURE_7"].ToString(),
-                                    ImagePathMiniature_8 = reader["IMAGE_PATH_MINIATURE_8"].ToString()
+                                    ImagePathMiniature_8 = reader["IMAGE_PATH_MINIATURE_8"].ToString(),
+                                    ImageTable = reader["IMAGE_TABLE"].ToString()
                                 });
                             }
                         }
@@ -125,11 +127,11 @@ namespace eoc_kmvk.ru.Models {
                                     NameWork = reader["NAME_WORK"].ToString(),
                                     DetailsWork = reader["DETAILS_WORK"].ToString(),
                                     ImagePath = reader["IMAGE_PATH"].ToString(),
-                                    PriceRoznica = Convert.ToDouble(reader["PRICE_ROZNICE"]),
-                                    PriceOpt = Convert.ToDouble(reader["PRICE_OPT"]),
-                                    PriceBigOpt = Convert.ToDouble(reader["PRICE_BIG_OPT"]),
-                                    PriceSpec_1 = Convert.ToDouble(reader["PRICE_SPEC_1"]),
-                                    PriceSpec_2 = Convert.ToDouble(reader["PRICE_SPEC_2"]),
+                                    //PriceRoznica = Convert.ToDouble(reader["PRICE_ROZNICE"]),
+                                    //PriceOpt = Convert.ToDouble(reader["PRICE_OPT"]),
+                                    //PriceBigOpt = Convert.ToDouble(reader["PRICE_BIG_OPT"]),
+                                    //PriceSpec_1 = Convert.ToDouble(reader["PRICE_SPEC_1"]),
+                                    //PriceSpec_2 = Convert.ToDouble(reader["PRICE_SPEC_2"]),
                                     RubCountNotNds = Convert.ToDouble(reader["RUB_COUNT_NOT_NDS"]),
                                     TermsOfSale = reader["TERMS_OF_SALE"].ToString(),
                                     Category = Convert.ToInt32(reader["CATEGORY"]),
@@ -142,7 +144,8 @@ namespace eoc_kmvk.ru.Models {
                                     ImagePathMiniature_5 = reader["IMAGE_PATH_MINIATURE_5"].ToString(),
                                     ImagePathMiniature_6 = reader["IMAGE_PATH_MINIATURE_6"].ToString(),
                                     ImagePathMiniature_7 = reader["IMAGE_PATH_MINIATURE_7"].ToString(),
-                                    ImagePathMiniature_8 = reader["IMAGE_PATH_MINIATURE_8"].ToString()
+                                    ImagePathMiniature_8 = reader["IMAGE_PATH_MINIATURE_8"].ToString(),
+                                    ImageTable = reader["IMAGE_TABLE"].ToString()
                                 });
                             }
                         }

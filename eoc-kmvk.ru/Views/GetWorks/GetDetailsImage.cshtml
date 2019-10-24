@@ -97,7 +97,7 @@
                 </div>
                 <div class="main-block">
                     <div class="content">
-                        <div id="idImages" class="details_image col-lg-12">
+                        <div id="idImages" class="details_image col-lg-12 col-md-12 col-xs-6 col-sm-6">
                             <button class="img_work btn-link">
                                 <p id="idTitle" class="text-center text-details weight">@item.NameWork</p>
                                 @*<div id="idFotorama" class="fotorama" data-width="400" data-height="340" data-nav="thumbs">*@
@@ -118,7 +118,10 @@
                     <div class="col-lg-10 details">
                         <p id="idTitle" class="text-details">@item.DetailsWork</p>
                     </div>
-                    <table border="1" class="table-main col-lg-10">
+                    <div>
+                        <img class="table-main col-lg-10 col-md-10 col-xs-6 col-sm-6" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImageTable.Replace("wwwroot", "~"))" />
+                    </div>
+                    @*<table border="1" class="table-main col-lg-10">
                         <tr class="table-title">
                             <th class="text-center">Стоимость</th>
                             <th class="text-center">руб/шт(без НДС)</th>
@@ -149,7 +152,7 @@
                             <td>@item.PriceSpec_2</td>
                             <td>Покупка от 31 шт или периодические покупки от 20 шт.</td>
                         </tr>
-                    </table>
+                    </table>*@
                 </div>
             }
         </div>

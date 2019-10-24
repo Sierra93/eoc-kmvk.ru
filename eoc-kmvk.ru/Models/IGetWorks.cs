@@ -29,6 +29,7 @@ namespace eoc_kmvk.ru.Models {
         string ImagePathMiniature_6 { get; set; }
         string ImagePathMiniature_7 { get; set; }
         string ImagePathMiniature_8 { get; set; }
+        string ImageTable { get; set; }
 
         /// <summary>
         /// Метод получения работ из БД

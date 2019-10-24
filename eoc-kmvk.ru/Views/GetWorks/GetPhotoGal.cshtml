@@ -94,7 +94,7 @@
                     break;
                 }
                 @foreach (var item in Model) {
-                    <div id="idImages" class="details_image col-lg-4">
+                    <div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
                         <form class="form" asp-action="GetPhotoGallery" asp-controller="GetWorks" method="post">
                             <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
                                 @*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
