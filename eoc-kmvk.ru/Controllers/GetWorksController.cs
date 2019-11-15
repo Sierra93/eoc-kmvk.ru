@@ -71,5 +71,37 @@ namespace eoc_kmvk.ru.Controllers {
             var model = photo.GetPhotoWork();
             return View(model);
         }
+        /// <summary>
+        /// Получает фото 2 категории для галереи 
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult GetPhotoGal_2(GetPhoto_2 photo) {
+            var model = photo.GetPhotoWork_2();
+            return View(model);
+        }
+        public IActionResult GetPhotoGal_3(GetPhoto photo) {
+            var model = photo.GetPhotoWork_3();
+            return View(model);
+        }
+        public IActionResult GetPhotoGal_4(GetPhoto photo) { 
+            var model = photo.GetPhotoWork_4();
+            return View(model);
+        }
+        public IActionResult GetPhotoGal_5(GetPhoto photo) {
+            var model = photo.GetPhotoWork_5(); 
+            return View(model);
+        }
+        public IActionResult GetPhotoGal_6(GetPhoto photo) {
+            var model = photo.GetPhotoWork_6();
+            return View(model);
+        }
+        public IActionResult GetPhotoGal_7(GetPhoto photo) {
+            var model = photo.GetPhotoWork_7(); 
+            return View(model);
+        }
+        public IActionResult GetPhotoGal_8(GetPhoto photo) {
+            var model = photo.GetPhotoWork_8();
+            return View(model);
+        }
     }
 }

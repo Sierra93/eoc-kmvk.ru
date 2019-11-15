@@ -87,24 +87,136 @@
             </div>
             <!--Выгружаем первые изображения, которые будут являться категориями
             При нажатии также переходим на страницу с конкретными изображениями работ-->
-            <div id="id_details_photo" class="photo_projects">
-                @model IEnumerable<eoc_kmvk.ru.Models.GetPhoto>
-                @foreach (var item in Model) {
-                    <p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
-                    break;
-                }
-                @foreach (var item in Model) {
-                    <div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                        <form class="form" asp-action="GetPhotoGallery" asp-controller="GetWorks" method="post">
-                            <button class="img_work btn-link" name="id" value="@item.Category" type="submit">
-                                @*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
-                                <img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
-                                <p id="idTitle" class="hidden">@item.Category</p>
-                            </button>
-                        </form>
-                    </div>
-                }
-            </div>
+			<div id="id_details_photo" class="photo_projects">
+				
+				@*@foreach (var item in Model) {
+					<p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
+					break;
+				}*@
+				<h2 id="idTitle" class="text-center text-details weight col-lg-12">Видеокамеры на лестничных площадках</h2>
+				@foreach (var item in Model) {
+					<div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						<form class="form" asp-action="GetPhotoGallery" asp-controller="GetWorks" method="post">
+							<button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+								@*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
+								<img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+								<p id="idTitle" class="hidden">@item.Category</p>
+							</button>
+						</form>
+					</div>
+				}
+				@*@foreach (var item in Model) {
+					<p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
+					break;
+				}*@
+			<h2 id="idTitle" class="text-center text-details weight col-lg-12">Видеокамеры на входе в подъезд</h2>
+				@foreach (var item in Model) {
+					<div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						<form class="form" asp-action="GetPhotoGal_2" asp-controller="GetWorks" method="post">
+							<button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+								@*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
+								<img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+								<p id="idTitle" class="hidden">@item.Category</p>
+							</button>
+						</form>
+					</div>
+				}
+				@*@foreach (var item in Model) {
+					<p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
+					break;
+				}*@
+			<h2 id="idTitle" class="text-center text-details weight col-lg-12">Видеонаблюдение прилегающей территории</h2>
+				@foreach (var item in Model) {
+					<div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						<form class="form" asp-action="GetPhotoGal_3" asp-controller="GetWorks" method="post">
+							<button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+								@*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
+								<img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+								<p id="idTitle" class="hidden">@item.Category</p>
+							</button>
+						</form>
+					</div>
+				}
+				@*@foreach (var item in Model) {
+					<p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
+					break;
+				}*@
+			<h2 id="idTitle" class="text-center text-details weight col-lg-12">Видеокамеры в лифтах</h2>
+				@foreach (var item in Model) {
+					<div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						<form class="form" asp-action="GetPhotoGal_4" asp-controller="GetWorks" method="post">
+							<button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+								@*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
+								<img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+								<p id="idTitle" class="hidden">@item.Category</p>
+							</button>
+						</form>
+					</div>
+				}
+				@*@foreach (var item in Model) {
+					<p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
+					break;
+				}*@
+			<h2 id="idTitle" class="text-center text-details weight col-lg-12">Купольные видеокамеры на кронштейнах НК-90</h2>
+				@foreach (var item in Model) {
+					<div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						<form class="form" asp-action="GetPhotoGal_5" asp-controller="GetWorks" method="post">
+							<button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+								@*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
+								<img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+								<p id="idTitle" class="hidden">@item.Category</p>
+							</button>
+						</form>
+					</div>
+				}
+				@*@foreach (var item in Model) {
+					<p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
+					break;
+				}*@
+			<h2 id="idTitle" class="text-center text-details weight col-lg-12">Видеонаблюдение на спортивной площадке</h2>
+				@foreach (var item in Model) {
+					<div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						<form class="form" asp-action="GetPhotoGal_6" asp-controller="GetWorks" method="post">
+							<button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+								@*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
+								<img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+								<p id="idTitle" class="hidden">@item.Category</p>
+							</button>
+						</form>
+					</div>
+				}
+				@*@foreach (var item in Model) {
+					<p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
+					break;
+				}*@
+				<h2 id="idTitle" class="text-center text-details weight col-lg-12">Видеорегистраторы в антивандальных боксах</h2>
+				@foreach (var item in Model) {
+					<div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						<form class="form" asp-action="GetPhotoGal_7" asp-controller="GetWorks" method="post">
+							<button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+								@*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
+								<img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+								<p id="idTitle" class="hidden">@item.Category</p>
+							</button>
+						</form>
+					</div>
+				}
+				@*@foreach (var item in Model) {
+					<p id="idTitle" class="text-center text-details weight col-lg-12">@item.Title</p>
+					break;
+				}*@
+				@foreach (var item in Model) {
+					<div id="idImages" class="details_image col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						<form class="form" asp-action="GetPhotoGal_8" asp-controller="GetWorks" method="post">
+							<button class="img_work btn-link" name="id" value="@item.Category" type="submit">
+								@*<p id="idTitle" class="text-center text-details weight">@item.NameWork</p>*@
+								<img class="line-3" onclick='openImageWindow(this.src);' src="@Url.Content(item.ImagePath.Replace("wwwroot", "~"))" />
+								<p id="idTitle" class="hidden">@item.Category</p>
+							</button>
+						</form>
+					</div>
+				}
+			</div>
         </div>
     </div>
     <!-- Футер -->
